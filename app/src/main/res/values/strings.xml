@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">সিরাজগঞ্জ ৩</string>
+
+    <!-- Login Activity String   -->
+    <string name="info_username_pass"> আপনার নাম এবং গোপন নাম্বার দিয়ে একাউন্টে প্রবেশ করুন</string>
+    <string name="user_name"> আপনার নাম </string>
+    <string name="user_pass"> গোপন নাম্বার </string>
+    <string name="forgot_password"> গোপন নাম্বার ভুলে গিয়েছেন?</string>
+    <string name="login"> প্রবেশ করুন </string>
+    <string name="remember"> আমাকে মনে রাখুন </string>
+    <string name="create_user"> সদস্য নয়? নিবন্ধন করুন </string>
+
+    <!-- Register Activity String   -->
+    <string name="name">নাম</string>
+    <string name="phone">মোবাইল</string>
+    <string name="father_name">পিতার নাম</string>
+    <string name="village">গ্রাম</string>
+    <string name="union">ইউনিয়ন</string>
+    <string name="thana">থানা</string>
+    <string name="back_to_login">অ্যাকাউন্ট থাকলে লগ ইন করুন</string>
+    <string name="register">নিবন্ধন করুন</string>
+
+    <!-- Dashboard String   -->
+    <string name="news">খবরাখবর</string>
+    <string name="emergency_number">জরুরী নাম্বার</string>
+    <string name="communication">যোগাযোগ</string>
+    <string name="bazar">বাজার</string>
+    <string name="agriculture">কৃষি</string>
+    <string name="pic_for_good_work">ভালো কাজের ছবি</string>
+    <string name="job_news">চাকরী’র খবর</string>
+    <string name="opinion_complies">মতামত ও অভিযোগ</string>
+    <string name="my_area">আমাদের এলাকা</string>
+    <string name="home">হোম</string>
+    <string name="others">অন্যান্য</string>
+    <string name="opinion">মতামত</string>
+    <string name="notice">নোটিশ</string>
+    <string name="bazar_name">বাজারের নাম</string>
+    <string name="bazar_description">এখানে বর্ণনা থাকবে</string>
+    <string name="notice_title">এমপি সাহেব নতুন একটা কাজ উদ্বোধন করলেন</string>
+
+    <!-- News Activity String   -->
+    <string name="demo_news">রাজার জন্য ছিল ১টি গোল্ডেন সিলভার ও ১টি আইভরির তৈরি সিংহাসন। পরবর্তীতে
+        ব্রিটিশরা সিংহাসন দু’টি নিয়ে যায়।
+    </string>
+    <string name="read_more">আরও পড়ুন</string>
+
+</resources>
