@@ -75,8 +75,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/news_item_view" />
+
+        <ProgressBar
+            android:id="@+id/loading_progressbar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>

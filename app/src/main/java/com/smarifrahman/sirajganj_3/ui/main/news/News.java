@@ -92,5 +92,4 @@ public class News {
     public void setCategory(String category) {
         this.category = category;
     }
-
 }
