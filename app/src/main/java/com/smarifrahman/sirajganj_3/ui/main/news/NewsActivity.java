@@ -10,23 +10,25 @@ import android.view.View;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.databinding.ActivityNewsBinding;
+import com.smarifrahman.sirajganj_3.ui.api.Repository;
 import com.smarifrahman.sirajganj_3.ui.main.MainActivity;
 
-public class NewsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class NewsActivity extends AppCompatActivity implements NewsView {
 
     ActivityNewsBinding activityNewsBinding;
     NewsAdapter newsAdapter;
-
+    NewsPresenter mPresenter;
+    Repository repository=new Repository(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         activityNewsBinding = DataBindingUtil.setContentView(this, R.layout.activity_news);
+        mPresenter=new NewsPresenter(this,repository);
+        mPresenter.getNews();
 
-        newsAdapter = new NewsAdapter(this);
-        activityNewsBinding.newsRv.setLayoutManager(new LinearLayoutManager(this));
-        activityNewsBinding.newsRv.setHasFixedSize(true);
-        activityNewsBinding.newsRv.setAdapter(newsAdapter);
 
         activityNewsBinding.home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +37,25 @@ public class NewsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void loadNews(List<News> allNews) {
+        newsAdapter = new NewsAdapter(this,allNews);
+        activityNewsBinding.newsRv.setLayoutManager(new LinearLayoutManager(this));
+        activityNewsBinding.newsRv.setHasFixedSize(true);
+        activityNewsBinding.newsRv.setAdapter(newsAdapter);
+        hideProgressBar();
+    }
+
+    @Override
+    public void showProgressBar() {
+        activityNewsBinding.loadingProgressbar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        activityNewsBinding.loadingProgressbar.setVisibility(View.INVISIBLE);
+
     }
 }
