@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".ui.main.news.NewsActivity">
 
         <LinearLayout
+            android:id="@+id/toolbar_news"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/gray"
@@ -73,6 +73,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/toolbar_news"
             android:id="@+id/news_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,11 +81,11 @@
 
         <ProgressBar
             android:id="@+id/loading_progressbar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>
