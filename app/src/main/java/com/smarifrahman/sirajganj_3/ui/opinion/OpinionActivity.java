@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.main.opinion;
+package com.smarifrahman.sirajganj_3.ui.opinion;
 
 import androidx.appcompat.app.AppCompatActivity;
 

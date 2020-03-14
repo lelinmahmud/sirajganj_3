@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.main.login;
+package com.smarifrahman.sirajganj_3.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

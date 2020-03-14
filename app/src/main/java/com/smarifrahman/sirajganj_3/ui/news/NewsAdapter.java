@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.main.news;
+package com.smarifrahman.sirajganj_3.ui.news;
 
 import android.content.Context;
 import android.view.LayoutInflater;

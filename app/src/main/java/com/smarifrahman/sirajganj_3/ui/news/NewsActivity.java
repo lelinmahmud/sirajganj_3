@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.main.news;
+package com.smarifrahman.sirajganj_3.ui.news;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.databinding.ActivityNewsBinding;
-import com.smarifrahman.sirajganj_3.ui.api.Repository;
+import com.smarifrahman.sirajganj_3.api.Repository;
 import com.smarifrahman.sirajganj_3.ui.main.MainActivity;
 
 import java.util.List;

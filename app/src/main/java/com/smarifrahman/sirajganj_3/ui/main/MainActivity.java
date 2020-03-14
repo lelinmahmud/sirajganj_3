@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.databinding.ActivityMainBinding;
-import com.smarifrahman.sirajganj_3.ui.main.news.NewsActivity;
+import com.smarifrahman.sirajganj_3.ui.news.NewsActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -1,8 +1,8 @@
-package com.smarifrahman.sirajganj_3.ui.main.news;
+package com.smarifrahman.sirajganj_3.ui.news;
 
 import android.util.Log;
 
-import com.smarifrahman.sirajganj_3.ui.api.Repository;
+import com.smarifrahman.sirajganj_3.api.Repository;
 
 import java.util.List;
 

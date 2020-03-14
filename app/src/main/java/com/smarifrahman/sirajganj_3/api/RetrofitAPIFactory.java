@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.api;
+package com.smarifrahman.sirajganj_3.api;
 
 
 import android.content.Context;

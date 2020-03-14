@@ -1,9 +1,9 @@
-package com.smarifrahman.sirajganj_3.ui.api;
+package com.smarifrahman.sirajganj_3.api;
 
 import android.content.Context;
 
 
-import com.smarifrahman.sirajganj_3.ui.main.news.News;
+import com.smarifrahman.sirajganj_3.ui.news.News;
 
 import java.util.List;
 
