@@ -7,41 +7,43 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.databinding.ActivityNewsBinding;
 import com.smarifrahman.sirajganj_3.api.Repository;
 import com.smarifrahman.sirajganj_3.ui.main.MainActivity;
+import com.smarifrahman.sirajganj_3.ui.news.model.News;
 
 import java.util.List;
 
-public class NewsActivity extends AppCompatActivity implements NewsView {
+public class NewsActivity extends AppCompatActivity implements NewsView, RecyclerViewItemClickListener {
+    private static final String TAG = "NewsActivity";
 
     ActivityNewsBinding activityNewsBinding;
     NewsAdapter newsAdapter;
     NewsPresenter mPresenter;
-    Repository repository=new Repository(this);
+    Repository repository = new Repository(this);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         activityNewsBinding = DataBindingUtil.setContentView(this, R.layout.activity_news);
-        mPresenter=new NewsPresenter(this,repository);
+        mPresenter = new NewsPresenter(this, repository);
         mPresenter.getNews();
 
 
-        activityNewsBinding.home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(NewsActivity.this, MainActivity.class));
-                finish();
-            }
+        activityNewsBinding.home.setOnClickListener(v -> {
+            startActivity(new Intent(NewsActivity.this, MainActivity.class));
+            finish();
         });
     }
 
     @Override
     public void loadNews(List<News> allNews) {
-        newsAdapter = new NewsAdapter(this,allNews);
+        newsAdapter = new NewsAdapter(this, this, allNews);
         activityNewsBinding.newsRv.setLayoutManager(new LinearLayoutManager(this));
         activityNewsBinding.newsRv.setHasFixedSize(true);
         activityNewsBinding.newsRv.setAdapter(newsAdapter);
@@ -50,12 +52,20 @@ public class NewsActivity extends AppCompatActivity implements NewsView {
 
     @Override
     public void showProgressBar() {
-        activityNewsBinding.loadingProgressbar.setVisibility(View.VISIBLE);
+        activityNewsBinding.newsPb.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgressBar() {
-        activityNewsBinding.loadingProgressbar.setVisibility(View.INVISIBLE);
+        activityNewsBinding.newsPb.setVisibility(View.INVISIBLE);
 
+    }
+
+    @Override
+    public void didPressed(int position) {
+        Intent detailsIntent = new Intent(NewsActivity.this, NewsDetailsActivity.class);
+        detailsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        detailsIntent.putExtra("news_id", position);
+        startActivity(detailsIntent);
     }
 }

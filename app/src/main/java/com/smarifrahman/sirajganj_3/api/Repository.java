@@ -3,7 +3,8 @@ package com.smarifrahman.sirajganj_3.api;
 import android.content.Context;
 
 
-import com.smarifrahman.sirajganj_3.ui.news.News;
+import com.smarifrahman.sirajganj_3.ui.news.model.News;
+import com.smarifrahman.sirajganj_3.ui.news.model.NewsDetails;
 
 import java.util.List;
 
@@ -25,4 +26,9 @@ public class Repository {
     public Flowable<List<News>> allNews(){
         return apiService.getAllNews();
     }
+
+    public Flowable<NewsDetails> newsDetails(int newsId){
+        return apiService.getNewsDetails(newsId);
+    }
+
 }

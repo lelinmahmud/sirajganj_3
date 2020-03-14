@@ -1,6 +1,7 @@
 package com.smarifrahman.sirajganj_3.api;
 
-import com.smarifrahman.sirajganj_3.ui.news.News;
+import com.smarifrahman.sirajganj_3.ui.news.model.News;
+import com.smarifrahman.sirajganj_3.ui.news.model.NewsDetails;
 
 import java.util.List;
 
@@ -14,9 +15,13 @@ public interface APIService {
 
     @Headers({"ApplyOfflineCache: true", "ApplyResponseCache: true"})
     @GET("home-contents/{outlet_id}")
-    Flowable<Object> getHomeContents(@Path("outlet_id")String outletId);
+    Flowable<Object> getHomeContents(@Path("outlet_id") String outletId);
 
     @GET("posts")
     Flowable<List<News>> getAllNews();
+
+    @GET("single/{news_id}")
+    Flowable<NewsDetails> getNewsDetails(@Path("news_id") int newsId);
+
 
 }

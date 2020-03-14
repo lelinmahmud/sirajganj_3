@@ -64,9 +64,8 @@
                 android:textColor="@color/blue"
                 android:layout_gravity="end|bottom"
                 android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?selectableItemBackground"/>
+                android:background="?android:selectableItemBackground"
+                />
 
         </LinearLayout>
 

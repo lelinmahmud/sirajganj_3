@@ -3,6 +3,7 @@ package com.smarifrahman.sirajganj_3.ui.news;
 import android.util.Log;
 
 import com.smarifrahman.sirajganj_3.api.Repository;
+import com.smarifrahman.sirajganj_3.ui.news.model.News;
 
 import java.util.List;
 
@@ -32,45 +33,13 @@ public class NewsPresenter {
         for (int i=0;i<newsList.size();i++){
             Log.e(TAG, "onSuccess: news :"+newsList.get(i).getTitle());
             Log.e(TAG, "onSuccess: content :"+newsList.get(i).getContent());
+            Log.e(TAG, "onSuccess: News ID: " + newsList.get(i).getId());
         }
 
         mView.loadNews(newsList);
 
     }
-//
-//    public void news(){
-//        Log.e(TAG, "news: is called" );
-//        repository.News().enqueue(new Callback<List<News>>() {
-//            @Override
-//            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-//
-//                Log.e(TAG, "onResponse: is called" );
-//
-//                if (response.isSuccessful()){
-//
-//                    Log.e(TAG, "onResponse: is called" );
-//                    List<News> list=response.body();
-//                    for (int i=0;i<list.size();i++){
-//                        Log.e(TAG, "onSuccess: news :"+list.get(i).getTitle());
-//                    }
-//
-//                }
-//                else {
-//                    try {
-//                        Log.e(TAG, "onResponse: "+response.errorBody().string() );
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<News>> call, Throwable t) {
-//                Log.e(TAG, "onFailure: "+t.getMessage() );
-//            }
-//        });
-//    }
-//
+
     private void onError(Throwable throwable){
         Log.e(TAG, "onError: "+throwable.getMessage() );
         mView.hideProgressBar();

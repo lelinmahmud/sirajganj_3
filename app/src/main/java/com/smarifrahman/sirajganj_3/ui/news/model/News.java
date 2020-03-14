@@ -1,4 +1,4 @@
-package com.smarifrahman.sirajganj_3.ui.news;
+package com.smarifrahman.sirajganj_3.ui.news.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

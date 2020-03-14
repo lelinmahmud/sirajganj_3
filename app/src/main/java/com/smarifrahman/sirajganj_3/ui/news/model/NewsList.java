@@ -1,4 +1,6 @@
-package com.smarifrahman.sirajganj_3.ui.news;
+package com.smarifrahman.sirajganj_3.ui.news.model;
+
+import com.smarifrahman.sirajganj_3.ui.news.model.News;
 
 import java.util.List;
 
