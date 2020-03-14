@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.finish:
-                finish();
+                MainActivity.this.finishAffinity();
                 break;
         }
     }
