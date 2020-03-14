@@ -296,7 +296,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitEnd"
-                    android:src="@drawable/mujib_borsho_02" />
+                    android:src="@drawable/mujib_borsho_02"/>
+                
 
             </RelativeLayout>
 
