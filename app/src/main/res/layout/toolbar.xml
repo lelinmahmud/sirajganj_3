@@ -14,7 +14,6 @@
         app:srcCompat="@drawable/ic_arrow_left"
         android:background="?android:attr/selectableItemBackground"
         android:adjustViewBounds="true"
-        android:layout_marginStart="8dp"
         android:clickable="true"
         android:focusable="true"/>
 
