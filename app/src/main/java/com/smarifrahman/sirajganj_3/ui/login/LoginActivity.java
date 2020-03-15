@@ -12,6 +12,7 @@ import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.api.Repository;
 import com.smarifrahman.sirajganj_3.databinding.ActivityLoginBinding;
 import com.smarifrahman.sirajganj_3.ui.main.MainActivity;
+import com.smarifrahman.sirajganj_3.utils.SharedPrefManager;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,LoginView {
 
@@ -26,6 +27,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        if (SharedPrefManager.getInstance(this).loggedIn()){
+            navigateToMain();
+            return;
+        }
         mPresenter= new LoginPresenter(repository,this,this);
         mLoginBinding.loginBtn.setOnClickListener(this);
 

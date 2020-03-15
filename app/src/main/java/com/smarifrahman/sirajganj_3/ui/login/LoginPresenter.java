@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.api.Repository;
+import com.smarifrahman.sirajganj_3.utils.SharedPrefManager;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -32,6 +33,8 @@ public class LoginPresenter {
 
     private void loginSuccess(User user){
         Log.e(TAG, "loginSuccess: "+user.getUserDisplayName() );
+        SharedPrefManager.getInstance(context).saveUser(user);
+
         loginView.navigateToMain();
     }
     private void loginError(Throwable throwable){
