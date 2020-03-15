@@ -10,7 +10,12 @@ import android.view.View;
 
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.databinding.ActivityMainBinding;
+import com.smarifrahman.sirajganj_3.ui.bazar.BazarActivity;
+import com.smarifrahman.sirajganj_3.ui.communication.CommunicationActivity;
+import com.smarifrahman.sirajganj_3.ui.job.JobsActivity;
 import com.smarifrahman.sirajganj_3.ui.news.NewsActivity;
+import com.smarifrahman.sirajganj_3.ui.number.EmergencyNumberActivity;
+import com.smarifrahman.sirajganj_3.ui.opinion.OpinionActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,7 +28,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         activityMainBinding.newsItem.setOnClickListener(this);
+        activityMainBinding.emergencyNumber.setOnClickListener(this);
         activityMainBinding.communicationItem.setOnClickListener(this);
+        activityMainBinding.bazarItem.setOnClickListener(this);
+        activityMainBinding.jobsItem.setOnClickListener(this);
+        activityMainBinding.opinionItem.setOnClickListener(this);
         activityMainBinding.finish.setOnClickListener(this);
 
     }
@@ -37,7 +46,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startNewActivity(this, NewsActivity.class);
                 break;
 
+            case R.id.emergency_number:
+                startNewActivity(this, EmergencyNumberActivity.class);
+                break;
+
             case R.id.communication_item:
+                startNewActivity(this, CommunicationActivity.class);
+                break;
+
+            case R.id.bazar_item:
+                startNewActivity(this, BazarActivity.class);
+                break;
+
+            case R.id.jobs_item:
+                startNewActivity(this, JobsActivity.class);
+                break;
+
+            case R.id.opinion_item:
+                startNewActivity(this, OpinionActivity.class);
                 break;
 
             case R.id.finish:

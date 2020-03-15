@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.opinion.OpinionActivity">
+        tools:context=".ui.area.MyAreaActivity">
 
         <LinearLayout
-            android:id="@+id/toolbar_opinion"
+            android:id="@+id/toolbar_news"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/gray"
@@ -18,13 +17,13 @@
 
 
             <LinearLayout
+                android:id="@+id/home"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/home"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_home" />
@@ -34,22 +33,24 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_weight="5"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/icon_news"
                     android:layout_width="48dp"
                     android:layout_height="?actionBarSize"
-                    android:src="@drawable/ic_opinion" />
+                    android:src="@drawable/ic_my_area"
+                    android:padding="4dp"/>
 
                 <TextView
                     android:id="@+id/title_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/opinion_complies"
+                    android:text="@string/my_area"
                     android:textColor="@color/blue"
+
                     android:textSize="22sp" />
 
 
@@ -58,7 +59,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:gravity="center">
 
                 <ImageView
@@ -74,27 +75,17 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/opinion_rv"
+            android:id="@+id/news_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/add_opinion"
-            android:layout_below="@id/toolbar_opinion"
-            tools:listitem="@layout/opinion_item_view" />
+            android:layout_below="@id/toolbar_news"
+            tools:listitem="@layout/news_item_view" />
 
         <ProgressBar
-            android:id="@+id/opinion_pb"
+            android:id="@+id/news_pb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_opinion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/add_opinion"
-            android:padding="10dp"/>
+            android:layout_centerInParent="true" />
 
 
     </RelativeLayout>

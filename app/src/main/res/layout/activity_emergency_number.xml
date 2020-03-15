@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.number.EmergencyNumberActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbar_news"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/gray"
+        android:orientation="horizontal"
+        android:weightSum="8">
+
+
+        <LinearLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_home" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <ImageView
+                android:id="@+id/icon_news"
+                android:layout_width="48dp"
+                android:layout_height="?actionBarSize"
+                android:src="@drawable/ic_emergency_number"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/emergency_number"
+                android:textColor="@color/blue"
+                android:textSize="22sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/finish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_search" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/taras"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_taras_thana_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_taras_thana_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/raiganj"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_raiganj_thana_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_raiganj_thana_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/fire_service"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_fire_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_fire_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/taras_hospital"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ta_hospital_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ta_hospital_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/raiganj_hospital"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ra_hospital_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ra_hospital_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/ambulance"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ambulance_1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ambulance_2"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+</ScrollView>

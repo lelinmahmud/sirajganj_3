@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.news.NewsDetailsActivity"></activity>
+        <activity android:name=".ui.area.MyAreaActivity"></activity>
+        <activity android:name=".ui.communication.CommunicationActivity" />
+        <activity android:name=".ui.number.EmergencyNumberActivity" />
+        <activity android:name=".ui.job.JobsActivity" />
+        <activity android:name=".ui.bazar.BazarActivity" />
+        <activity android:name=".ui.news.NewsDetailsActivity" />
         <activity android:name=".ui.opinion.OpinionActivity" />
         <activity android:name=".ui.news.NewsActivity" />
         <activity android:name=".ui.main.MainActivity" />

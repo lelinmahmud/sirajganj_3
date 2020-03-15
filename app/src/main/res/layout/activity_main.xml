@@ -153,6 +153,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/bazar_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?selectableItemBackgroundBorderless"
@@ -209,6 +210,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/jobs_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?selectableItemBackgroundBorderless"
@@ -242,6 +244,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/opinion_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?selectableItemBackgroundBorderless"
@@ -270,7 +273,7 @@
                             android:background="?selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:focusable="true"
-                            android:src="@drawable/ic_emergency_number" />
+                            android:src="@drawable/ic_my_area" />
 
                         <TextView
                             android:layout_width="wrap_content"
