@@ -3,6 +3,7 @@ package com.smarifrahman.sirajganj_3.api;
 import android.content.Context;
 
 
+import com.smarifrahman.sirajganj_3.ui.login.User;
 import com.smarifrahman.sirajganj_3.ui.news.model.News;
 import com.smarifrahman.sirajganj_3.ui.news.model.NewsDetails;
 
@@ -29,6 +30,9 @@ public class Repository {
 
     public Flowable<NewsDetails> newsDetails(int newsId){
         return apiService.getNewsDetails(newsId);
+    }
+    public Flowable<User> login(String username, String password){
+        return apiService.login(username,password);
     }
 
 }

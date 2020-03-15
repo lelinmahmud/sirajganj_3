@@ -9,6 +9,8 @@
     <string name="login"> প্রবেশ করুন </string>
     <string name="remember"> আমাকে মনে রাখুন </string>
     <string name="create_user"> সদস্য নয়? নিবন্ধন করুন </string>
+    <string name="empty_field">  আপনার নাম অথবা  গোপন নাম্বার খালি</string>
+    <string name="wrong_password">  আপনার নাম অথবা  গোপন নাম্বার ভুল</string>
     <string name="submit">সাবমিট করুন</string>
 
     <!-- Register Activity String   -->

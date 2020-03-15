@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class RetrofitAPIFactory {
-    private final static String BASE_URL = "https://sirajganj3.com.bd/wp-json/ar/v1/";
+    private final static String BASE_URL = "https://sirajganj3.com.bd/wp-json/";
     private final static int TIME_OUT = 30;
     private final static long cacheSize = 100 * 1024 * 1024;
 
