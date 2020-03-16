@@ -10,9 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.area.MyAreaActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.login.LoginActivity"/>
+        <activity android:name=".ui.area.MyAreaActivity" />
         <activity android:name=".ui.communication.CommunicationActivity" />
         <activity android:name=".ui.number.EmergencyNumberActivity" />
         <activity android:name=".ui.job.JobsActivity" />
@@ -21,7 +22,8 @@
         <activity android:name=".ui.opinion.OpinionActivity" />
         <activity android:name=".ui.news.NewsActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.login.LoginActivity">
+
+        <activity android:name=".ui.SplashScreen" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
