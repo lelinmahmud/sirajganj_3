@@ -60,8 +60,8 @@
 
     <!-- Job Activity String   -->
     <string name="job_title">মোটর মেকানিক</string>
-    <string name="job_title_name">মপদের নাম</string>
-    <string name="organization_name">মভাই ভাই অটোমোবাইলস</string>
+    <string name="job_title_name">পদের নাম</string>
+    <string name="organization_name">ভাই ভাই অটোমোবাইলস</string>
     <string name="organization">প্রতিষ্ঠানের নাম </string>
     <string name="salary">বেতন: </string>
     <string name="organization_owner_name">মালিক: </string>
@@ -70,28 +70,28 @@
 
     <!-- Emergency Number Activity String -->
     <string name="taras">তাড়াশ থানা</string>
-    <string name="num_taras_thana_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_taras_thana_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_taras_thana_1"> 01713-374042</string>
+    <string name="num_taras_thana_2"> 01713-374042</string>
 
     <string name="raiganj">রায়গঞ্জ থানা</string>
-    <string name="num_raiganj_thana_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_raiganj_thana_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_raiganj_thana_1"> 01713-374045</string>
+    <string name="num_raiganj_thana_2"> 01713-374045</string>
 
     <string name="fire_service">ফায়ার সার্ভিস</string>
-    <string name="num_fire_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_fire_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_fire_1"> 01737-073337</string>
+    <string name="num_fire_2"> 01737-073337</string>
 
     <string name="taras_hospital">তাড়াশ উপজেলা স্বাস্থ্য কলপ্লেক্স</string>
-    <string name="num_ta_hospital_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_ta_hospital_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_ta_hospital_1"> 01730-324722</string>
+    <string name="num_ta_hospital_2"> 01730-324722</string>
 
     <string name="raiganj_hospital">রায়গঞ্জ উপজেলা স্বাস্থ্য কমপ্লেক্স</string>
-    <string name="num_ra_hospital_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_ra_hospital_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_ra_hospital_1"> 01769-961666</string>
+    <string name="num_ra_hospital_2"> 01769-961666</string>
 
     <string name="ambulance">অ্যাম্বুলেন্স</string>
-    <string name="num_ambulance_1"> ০৩২১৩৪৬৫৪৩২১৩</string>
-    <string name="num_ambulance_2"> ৩৫৪৩৬৮৪৩৫৪৫৪৫</string>
+    <string name="num_ambulance_1"> 999</string>
+    <string name="num_ambulance_2"> 999</string>
 
     <!-- Opinion Activity String -->
     <string name="date">০৮/০১/২০২১</string>

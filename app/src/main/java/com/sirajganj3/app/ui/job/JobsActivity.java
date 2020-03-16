@@ -13,21 +13,27 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sirajganj3.app.R;
+import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.databinding.ActivityJobsBinding;
+import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.main.MainActivity;
 
-public class JobsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class JobsActivity extends AppCompatActivity implements JobView {
     ActivityJobsBinding jobsBinding;
+    private Repository repository=new Repository(this);
+    private JobPresenter jobPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
         jobsBinding = DataBindingUtil.setContentView(this, R.layout.activity_jobs);
-
+        jobPresenter=new JobPresenter(this,repository);
+        jobPresenter.loadJobs();
         jobsBinding.jobsRv.setLayoutManager(new LinearLayoutManager(this));
         jobsBinding.jobsRv.setHasFixedSize(true);
-        jobsBinding.jobsRv.setAdapter(new JobAdapter(this));
 
 
         jobsBinding.addBtn.setOnClickListener(v -> {
@@ -55,5 +61,23 @@ public class JobsActivity extends AppCompatActivity {
     private void submitJob() {
         //TODO
         Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loadJobInfo(List<JobInfo> jobInfo) {
+        jobsBinding.jobsRv.setAdapter(new JobAdapter(this,jobInfo));
+        hideProgressBar();
+
+    }
+
+    @Override
+    public void showProgressBar() {
+        jobsBinding.newsPb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        jobsBinding.newsPb.setVisibility(View.INVISIBLE);
+
     }
 }

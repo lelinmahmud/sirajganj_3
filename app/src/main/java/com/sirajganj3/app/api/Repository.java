@@ -3,6 +3,8 @@ package com.sirajganj3.app.api;
 import android.content.Context;
 
 
+import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
@@ -33,6 +35,13 @@ public class Repository {
     }
     public Flowable<User> login(String username, String password){
         return apiService.login(username,password);
+    }
+
+    public Flowable<List<BazarInfo>> getBazar(){
+        return apiService.getBazarInfo();
+    }
+    public Flowable<List<JobInfo>> getJobs(){
+        return apiService.getJobInfo();
     }
 
 }

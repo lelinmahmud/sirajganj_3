@@ -26,10 +26,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-        if (SharedPrefManager.getInstance(this).loggedIn()) {
-            navigateToMain();
-            return;
-        }
+//        if (SharedPrefManager.getInstance(this).loggedIn()) {
+//            navigateToMain();
+//            return;
+//        }
 
         mPresenter = new LoginPresenter(repository, this, this);
         mLoginBinding.loginBtn.setOnClickListener(this);
@@ -51,9 +51,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
 
         if (id == R.id.login_btn) {
-            if (validation(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString())) {
-                mPresenter.userLogin(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString());
-            }
+            Intent registerIntent = new Intent(this, MainActivity.class);
+            registerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(registerIntent);
+//            if (validation(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString())) {
+//                mPresenter.userLogin(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString());
+//            }
+
         } else if (id == R.id.register_btn) {
             Intent registerIntent = new Intent(this, RegisterActivity.class);
             registerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

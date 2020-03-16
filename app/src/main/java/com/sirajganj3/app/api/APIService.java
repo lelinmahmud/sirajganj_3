@@ -1,5 +1,7 @@
 package com.sirajganj3.app.api;
 
+import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.login.ForgotPassword;
 import com.sirajganj3.app.ui.login.ForgotPasswordResponse;
 import com.sirajganj3.app.ui.login.Register;
@@ -45,6 +47,12 @@ public interface APIService {
     @POST("wp/v2/users/register")
     Flowable<RegisterResponse> registerUser
             (@Body Register register);
+
+    @GET("acf/v3/bazar")
+    Flowable<List<BazarInfo>> getBazarInfo();
+
+    @GET("acf/v3/jobs")
+    Flowable<List<JobInfo>> getJobInfo();
 
 
 
