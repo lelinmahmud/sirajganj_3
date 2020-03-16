@@ -3,7 +3,7 @@
 
     <!-- Login Activity String   -->
     <string name="info_username_pass"> আপনার নাম এবং গোপন নাম্বার দিয়ে একাউন্টে প্রবেশ করুন</string>
-    <string name="user_name"> আপনার নাম </string>
+    <string name="user_name"> আপনার ইউজার নেইম </string>
     <string name="user_pass"> গোপন নাম্বার </string>
     <string name="forgot_password"> গোপন নাম্বার ভুলে গিয়েছেন?</string>
     <string name="login"> প্রবেশ করুন </string>
@@ -15,6 +15,7 @@
 
     <!-- Register Activity String   -->
     <string name="name">নাম</string>
+    <string name="email">ইমেইল</string>
     <string name="phone">মোবাইল</string>
     <string name="father_name">পিতার নাম</string>
     <string name="village">গ্রাম</string>

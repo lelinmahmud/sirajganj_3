@@ -12,34 +12,36 @@ import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.api.Repository;
 import com.smarifrahman.sirajganj_3.databinding.ActivityLoginBinding;
 import com.smarifrahman.sirajganj_3.ui.main.MainActivity;
+import com.smarifrahman.sirajganj_3.ui.news.NewsActivity;
+import com.smarifrahman.sirajganj_3.ui.news.NewsDetailsActivity;
 import com.smarifrahman.sirajganj_3.utils.SharedPrefManager;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,LoginView {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginView {
 
     ActivityLoginBinding mLoginBinding;
     private LoginPresenter mPresenter;
-    private Repository repository=new Repository(this);
+    private Repository repository = new Repository(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
         mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        if (SharedPrefManager.getInstance(this).loggedIn()){
+
+        if (SharedPrefManager.getInstance(this).loggedIn()) {
             navigateToMain();
             return;
         }
-        mPresenter= new LoginPresenter(repository,this,this);
-        mLoginBinding.loginBtn.setOnClickListener(this);
 
+        mPresenter = new LoginPresenter(repository, this, this);
+        mLoginBinding.loginBtn.setOnClickListener(this);
+        mLoginBinding.registerBtn.setOnClickListener(this);
 
     }
 
-    private boolean validation(String username,String password){
-        if (username.isEmpty()||password.isEmpty()){
-            Toast.makeText(this,R.string.empty_field,Toast.LENGTH_SHORT).show();
+    private boolean validation(String username, String password) {
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, R.string.empty_field, Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -51,10 +53,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
 
         if (id == R.id.login_btn) {
-            if (validation(mLoginBinding.userName.getText().toString(),mLoginBinding.password.getText().toString())){
-                mPresenter.userLogin(mLoginBinding.userName.getText().toString(),mLoginBinding.password.getText().toString());
-
+            if (validation(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString())) {
+                mPresenter.userLogin(mLoginBinding.userName.getText().toString(), mLoginBinding.password.getText().toString());
             }
+        } else if (id == R.id.register_btn) {
+            Intent registerIntent = new Intent(this, RegisterActivity.class);
+            registerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(registerIntent);
         }
     }
 
