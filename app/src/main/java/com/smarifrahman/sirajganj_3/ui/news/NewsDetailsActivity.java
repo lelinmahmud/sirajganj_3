@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.smarifrahman.sirajganj_3.R;
 import com.smarifrahman.sirajganj_3.api.Repository;
 import com.smarifrahman.sirajganj_3.databinding.ActivityNewsDetailsBinding;
@@ -42,6 +43,7 @@ public class NewsDetailsActivity extends AppCompatActivity implements NewsDetail
     public void loadNewsDetails(NewsDetails newsDetails) {
         newsDetailsBinding.newsDetailsTitle.setText(newsDetails.getTitle());
         newsDetailsBinding.newsDetails.setText(newsDetails.getContent());
+        Glide.with(this).load(newsDetails.getFeaturedImage()).into(newsDetailsBinding.newsDetailsImg);
         hideProgressBar();
     }
 

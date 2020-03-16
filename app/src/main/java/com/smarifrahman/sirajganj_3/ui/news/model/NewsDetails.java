@@ -11,6 +11,9 @@ public class NewsDetails {
     @SerializedName("content")
     @Expose
     private String content;
+    @SerializedName("featured_image")
+    @Expose
+    private String featuredImage;
 
     public String getTitle() {
         return title;
@@ -26,5 +29,13 @@ public class NewsDetails {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getFeaturedImage() {
+        return featuredImage;
+    }
+
+    public void setFeaturedImage(String featuredImage) {
+        this.featuredImage = featuredImage;
     }
 }
