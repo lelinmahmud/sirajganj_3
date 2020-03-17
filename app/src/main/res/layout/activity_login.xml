@@ -8,10 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray"
-        tools:context=".ui.main.login.LoginActivity">
+        tools:context=".ui.login.LoginActivity">
+
+        <ImageView
+            android:layout_above="@id/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_logo_m"
+            android:layout_marginBottom="22dp"/>
 
 
         <LinearLayout
+            android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -32,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_rectangle_fill"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:padding="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/user_name"
@@ -45,6 +53,8 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="2dp"
                     android:background="@color/white" />
 
                 <EditText
@@ -55,7 +65,8 @@
                     android:background="@null"
                     android:hint="@string/user_name"
                     android:inputType="text"
-                    android:textColorHint="@color/white"/>
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"/>
 
 
             </LinearLayout>
@@ -65,10 +76,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_rectangle_fill"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:padding="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_lock" />
@@ -77,17 +88,20 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
                     android:background="@color/white" />
 
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
                     android:background="@null"
                     android:hint="@string/user_pass"
                     android:inputType="textPassword"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"/>
 
 
             </LinearLayout>
@@ -145,6 +159,14 @@
                 android:src="@drawable/ic_play_arrow" />
 
         </LinearLayout>
+
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:id="@+id/loading_progressbar"/>
 
 
     </RelativeLayout>

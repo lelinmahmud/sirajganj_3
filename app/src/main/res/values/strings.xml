@@ -3,15 +3,19 @@
 
     <!-- Login Activity String   -->
     <string name="info_username_pass"> আপনার নাম এবং গোপন নাম্বার দিয়ে একাউন্টে প্রবেশ করুন</string>
-    <string name="user_name"> আপনার নাম </string>
+    <string name="user_name"> আপনার ইউজার নেইম </string>
     <string name="user_pass"> গোপন নাম্বার </string>
     <string name="forgot_password"> গোপন নাম্বার ভুলে গিয়েছেন?</string>
     <string name="login"> প্রবেশ করুন </string>
     <string name="remember"> আমাকে মনে রাখুন </string>
     <string name="create_user"> সদস্য নয়? নিবন্ধন করুন </string>
+    <string name="empty_field">  আপনার নাম অথবা  গোপন নাম্বার খালি</string>
+    <string name="wrong_password">  আপনার নাম অথবা  গোপন নাম্বার ভুল</string>
+    <string name="submit">সাবমিট করুন</string>
 
     <!-- Register Activity String   -->
     <string name="name">নাম</string>
+    <string name="email">ইমেইল</string>
     <string name="phone">মোবাইল</string>
     <string name="father_name">পিতার নাম</string>
     <string name="village">গ্রাম</string>
@@ -43,5 +47,60 @@
         ব্রিটিশরা সিংহাসন দু’টি নিয়ে যায়।
     </string>
     <string name="read_more">আরও পড়ুন</string>
+
+    <!-- Bazar Activity String   -->
+    <string name="product_name">আলু</string>
+    <string name="product_name_title">পণ্যের নাম </string>
+    <string name="amount">পরিমান:</string>
+    <string name="price">দাম:</string>
+    <string name="owner_name">নাম:</string>
+    <string name="owner_name_full">উৎপাদকের নাম:</string>
+    <string name="owner_mobile_number">ফোন:</string>
+    <string name="advertise">পণ্যের বিজ্ঞাপন দিন</string>
+
+    <!-- Job Activity String   -->
+    <string name="job_title">মোটর মেকানিক</string>
+    <string name="job_title_name">পদের নাম</string>
+    <string name="organization_name">ভাই ভাই অটোমোবাইলস</string>
+    <string name="organization">প্রতিষ্ঠানের নাম </string>
+    <string name="salary">বেতন: </string>
+    <string name="organization_owner_name">মালিক: </string>
+    <string name="organization_owner_name_full">মালিকের নাম</string>
+    <string name="post_job">চাকরীর খবর দিন</string>
+
+    <!-- Emergency Number Activity String -->
+    <string name="taras">তাড়াশ থানা</string>
+    <string name="num_taras_thana_1"> 01713-374042</string>
+    <string name="num_taras_thana_2"> 01713-374042</string>
+
+    <string name="raiganj">রায়গঞ্জ থানা</string>
+    <string name="num_raiganj_thana_1"> 01713-374045</string>
+    <string name="num_raiganj_thana_2"> 01713-374045</string>
+
+    <string name="fire_service">ফায়ার সার্ভিস</string>
+    <string name="num_fire_1"> 01737-073337</string>
+    <string name="num_fire_2"> 01737-073337</string>
+
+    <string name="taras_hospital">তাড়াশ উপজেলা স্বাস্থ্য কলপ্লেক্স</string>
+    <string name="num_ta_hospital_1"> 01730-324722</string>
+    <string name="num_ta_hospital_2"> 01730-324722</string>
+
+    <string name="raiganj_hospital">রায়গঞ্জ উপজেলা স্বাস্থ্য কমপ্লেক্স</string>
+    <string name="num_ra_hospital_1"> 01769-961666</string>
+    <string name="num_ra_hospital_2"> 01769-961666</string>
+
+    <string name="ambulance">অ্যাম্বুলেন্স</string>
+    <string name="num_ambulance_1"> 999</string>
+    <string name="num_ambulance_2"> 999</string>
+
+    <!-- Opinion Activity String -->
+    <string name="date">০৮/০১/২০২১</string>
+    <string name="title">নতুন রাস্তার জন্য ধন্যবাদ</string>
+    <string name="user_opinion"> আমার এলাকার নতুন রাস্তা নির্মাণ করার জন্য মাননীয় এমপি সাহেবকে ধন্যবাদ। আমাদের এখন অনেক সুবিধা হচ্ছে। দ্রæত সবখানে যেতে পারছি। এলাকার উন্নয়নে ভুমিকা রাখবে এই রাস্তা।</string>
+    <string name="add_opinion">মতামত ও অভিযোগ করুন</string>
+    <string name="opinion_subject">মতামত ও অভিযোগের বিষয়</string>
+    <string name="opinion_description">বর্ণনা</string>
+    <string name="answer">জবাব</string>
+
 
 </resources>
