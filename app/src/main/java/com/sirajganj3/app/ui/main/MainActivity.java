@@ -10,8 +10,10 @@ import android.view.View;
 
 import com.sirajganj3.app.R;
 import com.sirajganj3.app.databinding.ActivityMainBinding;
+import com.sirajganj3.app.ui.area.MyAreaActivity;
 import com.sirajganj3.app.ui.bazar.BazarActivity;
 import com.sirajganj3.app.ui.communication.CommunicationActivity;
+import com.sirajganj3.app.ui.goodwork.GoodWorkActivity;
 import com.sirajganj3.app.ui.job.JobsActivity;
 import com.sirajganj3.app.ui.news.NewsActivity;
 import com.sirajganj3.app.ui.number.EmergencyNumberActivity;
@@ -32,7 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activityMainBinding.communicationItem.setOnClickListener(this);
         activityMainBinding.bazarItem.setOnClickListener(this);
         activityMainBinding.jobsItem.setOnClickListener(this);
+        activityMainBinding.areaItem.setOnClickListener(this);
         activityMainBinding.opinionItem.setOnClickListener(this);
+        activityMainBinding.goodWorkItem.setOnClickListener(this);
         activityMainBinding.finish.setOnClickListener(this);
 
     }
@@ -62,8 +66,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startNewActivity(this, JobsActivity.class);
                 break;
 
+            case R.id.area_item:
+                startNewActivity(this, MyAreaActivity.class);
+                break;
+
             case R.id.opinion_item:
                 startNewActivity(this, OpinionActivity.class);
+                break;
+
+            case R.id.good_work_item:
+                startNewActivity(this, GoodWorkActivity.class);
                 break;
 
             case R.id.finish:
