@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AreaDetailsPresenter {
 
-    private static final String TAG = "NewsDetailsPresenter";
+    private static final String TAG = "AreaDetailsPresenter";
     private AreaDetailsView mDetailsView;
     private Repository repository;
 
@@ -29,8 +29,7 @@ public class AreaDetailsPresenter {
 
 
     private void onSuccess(NewsDetails newsDetails) {
-
-
+        mDetailsView.loadNewsDetails(newsDetails);
     }
 
     private void onError(Throwable throwable) {

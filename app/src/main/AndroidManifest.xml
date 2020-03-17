@@ -20,6 +20,7 @@
         <activity android:name=".ui.communication.CommunicationActivity" />
         <activity android:name=".ui.number.EmergencyNumberActivity" />
         <activity android:name=".ui.job.JobsActivity" />
+        <activity android:name=".ui.areaDetails.AreaDetailsActivity"/>
         <activity android:name=".ui.bazar.BazarActivity" />
         <activity android:name=".ui.news.NewsDetailsActivity" />
         <activity android:name=".ui.opinion.OpinionActivity" />
