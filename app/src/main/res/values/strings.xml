@@ -102,5 +102,16 @@
     <string name="opinion_description">বর্ণনা</string>
     <string name="answer">জবাব</string>
 
+    <!-- Good Work String   -->
+
+    <string name="good_work_title">নিজের বাড়ির ইউক্যালিপটাস কেটে ফেললেন মো: আসলাম।</string>
+    <string name="good_work_person">মো: আসলাম</string>
+    <string name="good_work_person_village_title">গ্রাম:</string>
+    <string name="good_work_person_village"> কুসুম্বি</string>
+    <string name="good_work_person_thana_title">থানা:</string>
+    <string name="good_work_person_thana">তাড়াশ</string>
+    <string name="add_good_work">ভালো কাজের ছবি দিন</string>
+
+
 
 </resources>
