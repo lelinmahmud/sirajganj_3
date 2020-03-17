@@ -3,6 +3,7 @@ package com.sirajganj3.app.api;
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.login.ForgotPassword;
 import com.sirajganj3.app.ui.login.ForgotPasswordResponse;
@@ -58,6 +59,9 @@ public interface APIService {
 
     @GET("ar/v1/area")
     Flowable<List<AreaInfo>> getAreaInfo();
+
+    @GET("acf/v3/good_work")
+    Flowable<List<GoodWork>> getGoodWork();
 
 //    @GET("ar/v1/single/{news_id}")
 //    Flowable<AreaNews> getNewsAreaDetails(@Path("news_id") int newsId);
