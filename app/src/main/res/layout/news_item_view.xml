@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:id="@+id/iv_news"
-            android:src="@drawable/news_img"
+            tools:src="@drawable/news_img"
             android:scaleType="centerCrop"/>
 
         <LinearLayout

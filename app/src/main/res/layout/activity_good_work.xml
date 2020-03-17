@@ -80,6 +80,14 @@
             android:layout_below="@id/toolbar_news"
             tools:listitem="@layout/good_work_item_view" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_good_work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_good_work"
+            android:layout_alignParentBottom="true"
+            android:padding="12dp"/>
+
         <ProgressBar
             android:id="@+id/news_pb"
             android:layout_width="wrap_content"
