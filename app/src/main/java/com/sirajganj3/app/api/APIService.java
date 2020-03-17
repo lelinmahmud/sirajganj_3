@@ -1,5 +1,6 @@
 package com.sirajganj3.app.api;
 
+import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
 import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.login.ForgotPassword;
@@ -53,6 +54,9 @@ public interface APIService {
 
     @GET("acf/v3/jobs")
     Flowable<List<JobInfo>> getJobInfo();
+
+    @GET("ar/v1/area")
+    Flowable<List<AreaInfo>> getAreaInfo();
 
 
 

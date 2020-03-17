@@ -3,6 +3,7 @@ package com.sirajganj3.app.api;
 import android.content.Context;
 
 
+import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
 import com.sirajganj3.app.ui.job.models.JobInfo;
 import com.sirajganj3.app.ui.login.User;
@@ -42,6 +43,10 @@ public class Repository {
     }
     public Flowable<List<JobInfo>> getJobs(){
         return apiService.getJobInfo();
+    }
+
+    public Flowable<List<AreaInfo>> getArea(){
+        return apiService.getAreaInfo();
     }
 
 }
