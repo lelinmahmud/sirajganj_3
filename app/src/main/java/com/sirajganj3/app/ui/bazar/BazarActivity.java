@@ -29,11 +29,19 @@ import com.sirajganj3.app.databinding.ActivityBazarBinding;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
 import com.sirajganj3.app.ui.main.MainActivity;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class BazarActivity extends AppCompatActivity implements BazarView {
 
@@ -41,6 +49,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
     private static final int GALLERY_REQUEST_CODE = 103;
     private static final int CAMERA_PERMISSION_CODE = 104;
     private static final int PICK_FROM_CAMERA = 105;
+    MultipartBody.Part body;
 
 
     ActivityBazarBinding bazarBinding;
@@ -155,6 +164,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             productImage.setImageBitmap(imageBitmap);
+           // convertToJpg(imageBitmap);
 
         } else if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
 
@@ -165,6 +175,8 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     productImage.setImageBitmap(bitmap);
+                  //  convertToJpg(bitmap);
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -194,6 +206,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
     private void submitProduct() {
         //TODO
+      //  mPresenter.postBazar(body);
         Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
     }
 
@@ -213,4 +226,37 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
         bazarBinding.bazarPb.setVisibility(View.INVISIBLE);
 
     }
+
+//    private void convertToJpg(Bitmap bitmap){
+//        File file =bitmapToFile(bitmap);
+//        RequestBody requestFile =
+//                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//
+//// MultipartBody.Part is used to send also the actual file name
+//         body =
+//                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+//
+//// add another part within the multipart request
+//        RequestBody fullName =
+//                RequestBody.create(MediaType.parse("multipart/form-data"), file.getName());
+//    }
+//
+//    private File bitmapToFile(Bitmap bitmap1){
+//        File f = new File(context.getCacheDir(), filename);
+//        f.createNewFile();
+//
+////Convert bitmap to byte array
+//        Bitmap bitmap =bitmap;
+//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+//        byte[] bitmapdata = bos.toByteArray();
+//
+////write the bytes in file
+//        FileOutputStream fos = new FileOutputStream(f);
+//        fos.write(bitmapdata);
+//        fos.flush();
+//        fos.close();
+//    }
+
+
 }
