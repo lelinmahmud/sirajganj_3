@@ -9,4 +9,5 @@ public interface JobView {
     void loadJobInfo(List<JobInfo> jobInfo);
     void showProgressBar();
     void hideProgressBar();
+    void showToast(String msg);
 }

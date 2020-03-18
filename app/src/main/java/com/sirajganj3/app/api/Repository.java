@@ -5,8 +5,10 @@ import android.content.Context;
 
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
+import com.sirajganj3.app.ui.job.models.JobPostResponse;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
@@ -35,6 +37,9 @@ public class Repository {
     public Flowable<NewsDetails> newsDetails(int newsId){
         return apiService.getNewsDetails(newsId);
     }
+    public Flowable<GoodWorkDetails> goodWorkDetails(int newsId){
+        return apiService.getGoodWorkDetails(newsId);
+    }
     public Flowable<User> login(String username, String password){
         return apiService.login(username,password);
     }
@@ -51,6 +56,10 @@ public class Repository {
     }
     public Flowable<List<GoodWork>> getGoodWork(){
         return apiService.getGoodWork();
+    }
+
+    public Flowable<JobPostResponse> postJob(String postName,String company,String salary,String owner,String phone){
+        return apiService.postJob(postName,company,salary,owner,phone);
     }
 
 }

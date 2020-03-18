@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.ui.job.models.JobInfo;
+import com.sirajganj3.app.ui.job.models.JobPostResponse;
 
 import java.util.List;
 
@@ -26,6 +27,19 @@ public class JobPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::jobSccess,this::onError);
+    }
+
+    public void postJob(String postName,String company,String salary,String owner,String phone){
+        repository.postJob(postName,company,salary,owner,phone)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::postJobSuccess,this::onError);
+    }
+
+    void postJobSuccess(JobPostResponse jobPostResponse){
+        mView.hideProgressBar();
+        mView.showToast(jobPostResponse.getMessage());
+        Log.e(TAG, "postJobSuccess: "+jobPostResponse.getMessage() );
     }
 
     void jobSccess(List<JobInfo> jobInfos){

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sirajganj3.app.R;
@@ -24,6 +25,8 @@ public class JobsActivity extends AppCompatActivity implements JobView {
     ActivityJobsBinding jobsBinding;
     private Repository repository=new Repository(this);
     private JobPresenter jobPresenter;
+    AlertDialog.Builder builder;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,12 @@ public class JobsActivity extends AppCompatActivity implements JobView {
 
 
         jobsBinding.addBtn.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(JobsActivity.this);
+             builder = new AlertDialog.Builder(JobsActivity.this);
             builder.setCancelable(false);
             ViewGroup viewGroup = findViewById(android.R.id.content);
             View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.job_form_view, viewGroup, false);
             builder.setView(dialogView);
-            AlertDialog alertDialog = builder.create();
+             alertDialog = builder.create();
             alertDialog.show();
             initXml(dialogView, alertDialog);
         });
@@ -55,12 +58,33 @@ public class JobsActivity extends AppCompatActivity implements JobView {
 
     private void initXml(View dialogView, AlertDialog alertDialog) {
         dialogView.findViewById(R.id.close).setOnClickListener(v -> alertDialog.dismiss());
-        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v -> submitJob());
+        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v ->
+                submitJob(dialogView)
+
+        );
     }
 
-    private void submitJob() {
+    private void submitJob(View view) {
         //TODO
-        Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
+        EditText et_post=view.findViewById(R.id.job_title);
+        EditText et_company=view.findViewById(R.id.company_name);
+        EditText et_sallary=view.findViewById(R.id.price);
+        EditText et_owner=view.findViewById(R.id.product_owner_name);
+        EditText et_phone=view.findViewById(R.id.phone_num);
+
+        String postName=et_post.getText().toString();
+        String sallary=et_sallary.getText().toString();
+        String company=et_company.getText().toString();
+        String owner=et_owner.getText().toString();
+        String phone=et_phone.getText().toString();
+        if (isvalid(postName,company,sallary,owner,phone)){
+            alertDialog.dismiss();
+            showProgressBar();
+            jobPresenter.postJob(postName,company,sallary,owner,phone);
+        }
+        else {
+            showToast("Fill up the all Fields");
+        }
     }
 
     @Override
@@ -79,5 +103,18 @@ public class JobsActivity extends AppCompatActivity implements JobView {
     public void hideProgressBar() {
         jobsBinding.newsPb.setVisibility(View.INVISIBLE);
 
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(this, ""+msg, Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean isvalid(String postname,String company,String salary,String owner,String phone){
+        if (postname.isEmpty()||company.isEmpty()||salary.isEmpty()||owner.isEmpty()||phone.isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

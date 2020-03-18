@@ -3,8 +3,10 @@ package com.sirajganj3.app.api;
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
+import com.sirajganj3.app.ui.job.models.JobPostResponse;
 import com.sirajganj3.app.ui.login.ForgotPassword;
 import com.sirajganj3.app.ui.login.ForgotPasswordResponse;
 import com.sirajganj3.app.ui.login.Register;
@@ -63,7 +65,21 @@ public interface APIService {
     @GET("acf/v3/good_work")
     Flowable<List<GoodWork>> getGoodWork();
 
-//    @GET("ar/v1/single/{news_id}")
-//    Flowable<AreaNews> getNewsAreaDetails(@Path("news_id") int newsId);
+
+
+    @GET("acf/v3/good_work/{news_id}")
+    Flowable<GoodWorkDetails> getGoodWorkDetails(@Path("news_id") int newsId);
+
+    @FormUrlEncoded
+    @POST("contact-form-7/v1/contact-forms/183/feedback")
+    Flowable<JobPostResponse> postJob(
+            @Field("post-name") String postName,
+            @Field("company") String company,
+            @Field("salary") String salary,
+            @Field("owner") String owner,
+            @Field("phone") String phone
+
+    );
+
 
 }
