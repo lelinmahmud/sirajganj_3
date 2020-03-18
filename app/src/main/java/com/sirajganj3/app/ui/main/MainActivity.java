@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         activityMainBinding.newsItem.setOnClickListener(this);
         activityMainBinding.emergencyNumber.setOnClickListener(this);
-        activityMainBinding.communicationItem.setOnClickListener(this);
         activityMainBinding.bazarItem.setOnClickListener(this);
         activityMainBinding.jobsItem.setOnClickListener(this);
         activityMainBinding.areaItem.setOnClickListener(this);
         activityMainBinding.opinionItem.setOnClickListener(this);
         activityMainBinding.goodWorkItem.setOnClickListener(this);
+        activityMainBinding.communicationItem.setOnClickListener(this);
         activityMainBinding.finish.setOnClickListener(this);
 
     }

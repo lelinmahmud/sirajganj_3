@@ -103,7 +103,6 @@
     <string name="answer">জবাব</string>
 
     <!-- Good Work String   -->
-
     <string name="good_work_title">নিজের বাড়ির ইউক্যালিপটাস কেটে ফেললেন মো: আসলাম।</string>
     <string name="good_work_person">মো: আসলাম</string>
     <string name="good_work_person_village_title">গ্রাম:</string>
@@ -111,6 +110,24 @@
     <string name="good_work_person_thana_title">থানা:</string>
     <string name="good_work_person_thana">তাড়াশ</string>
     <string name="add_good_work">ভালো কাজের ছবি দিন</string>
+
+    <!-- Communication Activity String  -->
+    <string name="motor_cycle">মোটরসাইকেল</string>
+    <string name="easy_bike">ইজি বাইক</string>
+    <string name="private_care">প্রাইভেট কার/মাইক্রোবাস</string>
+    <string name="pick_up">পিক আপ/ট্রাক</string>
+    <string name="bus">বাস</string>
+    <string name="boat">নৌযান</string>
+    <string name="type_of_vehicles">যানবাহনের ধরণ</string>
+    <string name="type_of_vehicles_n">যাত্রীবাহী ট্রলার</string>
+    <string name="driver_name">চালকের নাম</string>
+    <string name="driver_name_n">সাইফুল ইসলাম</string>
+    <string name="phone_number">ফোন নাম্বার</string>
+    <string name="phone_number_n">০১২৪৬৪৬৫১৪৭৪</string>
+    <string name="driver_image">ছবি</string>
+    <string name="add_vehicles">যানবাহন যুক্ত করুন</string>
+    <string name="vehicles_name">যানবাহন নাম</string>
+
 
 
 </resources>
