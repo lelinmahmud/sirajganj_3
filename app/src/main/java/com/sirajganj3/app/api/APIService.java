@@ -16,6 +16,7 @@ import com.sirajganj3.app.ui.login.RegisterResponse;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
+import com.sirajganj3.app.ui.opinion.Opinion;
 
 import java.util.List;
 
@@ -74,6 +75,9 @@ public interface APIService {
 
     @GET("acf/v3/good_work/{news_id}")
     Flowable<GoodWorkDetails> getGoodWorkDetails(@Path("news_id") int newsId);
+
+    @GET("ar/v1/opinion")
+    Flowable<List<Opinion>> getOpinion();
 
     @FormUrlEncoded
     @POST("contact-form-7/v1/contact-forms/183/feedback")

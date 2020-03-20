@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sirajganj3.app.R;
 
+import java.util.List;
+
 public class OpinionAdapter extends RecyclerView.Adapter<OpinionAdapter.ViewHolder> {
 
     private Context context;
+    private List<Opinion> opinions;
 
-    public OpinionAdapter(Context context) {
+    public OpinionAdapter(Context context, List<Opinion> opinions) {
         this.context = context;
-
+        this.opinions = opinions;
     }
 
     @NonNull
@@ -30,22 +33,30 @@ public class OpinionAdapter extends RecyclerView.Adapter<OpinionAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull OpinionAdapter.ViewHolder holder, int position) {
+        holder.userName.setText(""+opinions.get(position).getCommentAuthor());
+        holder.title.setText(""+opinions.get(position).getTitle());
+        holder.answerSubject.setText(""+opinions.get(position).getTitle());
+        holder.userName.setText(""+opinions.get(position).getContent());
+        holder.userName.setText(""+opinions.get(position).getCommentAuthor());
+        holder.userName.setText(""+opinions.get(position).getCommentAuthor());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return opinions.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView userName, title, description;
+        TextView userName, title,answerSubject, description,answer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName = itemView.findViewById(R.id.user_name);
             title = itemView.findViewById(R.id.opinion_subject_tv);
+            answerSubject = itemView.findViewById(R.id.answer_subject_tv);
             description = itemView.findViewById(R.id.user_opinion_tv);
+            answer = itemView.findViewById(R.id.answer_opinion_tv);
 
 
         }

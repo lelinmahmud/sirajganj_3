@@ -69,6 +69,7 @@
                      android:textStyle="bold"
                      android:textSize="18sp"
                      android:textColor="@color/black"
+                     android:visibility="gone"
                      android:text="@string/date" />
 
              </LinearLayout>
@@ -160,6 +161,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/black"
+                        android:visibility="gone"
                         android:text="@string/date" />
 
                 </LinearLayout>

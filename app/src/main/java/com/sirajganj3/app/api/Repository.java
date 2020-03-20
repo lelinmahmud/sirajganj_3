@@ -13,6 +13,7 @@ import com.sirajganj3.app.ui.job.models.JobPostResponse;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
+import com.sirajganj3.app.ui.opinion.Opinion;
 
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class Repository {
 
     public Flowable<List<BazarInfo>> getBazar(){
         return apiService.getBazarInfo();
+    }
+    public Flowable<List<Opinion>> getOpinion(){
+        return apiService.getOpinion();
     }
     public Flowable<List<JobInfo>> getJobs(){
         return apiService.getJobInfo();
