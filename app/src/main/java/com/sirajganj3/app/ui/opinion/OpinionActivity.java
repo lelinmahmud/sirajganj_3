@@ -13,22 +13,28 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sirajganj3.app.R;
+import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.databinding.ActivityOpinionBinding;
+import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.main.MainActivity;
 
-public class OpinionActivity extends AppCompatActivity {
+import java.util.List;
+
+public class OpinionActivity extends AppCompatActivity implements OpinionView{
 
     ActivityOpinionBinding opinionBinding;
+    OpinionPresenter mPresenter;
+    Repository repository=new Repository(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opinion);
         opinionBinding = DataBindingUtil.setContentView(this, R.layout.activity_opinion);
-
+        mPresenter=new OpinionPresenter(this,repository);
+        mPresenter.opinionArea();
         opinionBinding.opinionRv.setLayoutManager(new LinearLayoutManager(this));
         opinionBinding.opinionRv.setHasFixedSize(true);
-        opinionBinding.opinionRv.setAdapter(new OpinionAdapter(this));
 
         opinionBinding.addOpinion.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(OpinionActivity.this);
@@ -55,5 +61,23 @@ public class OpinionActivity extends AppCompatActivity {
     private void submitOpinion() {
         //TODO
         Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void opinonsInfo(List<Opinion> opinions) {
+        opinionBinding.opinionRv.setAdapter(new OpinionAdapter(this,opinions));
+        hideProgressBar();
+
+    }
+
+    @Override
+    public void showProgressBar() {
+        opinionBinding.opinionPb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        opinionBinding.opinionPb.setVisibility(View.INVISIBLE);
+
     }
 }

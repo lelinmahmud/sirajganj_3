@@ -28,7 +28,7 @@
                     android:layout_height="150dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/news_img" />
+                     />
 
                 <TextView
                     android:id="@+id/news_details_title"
