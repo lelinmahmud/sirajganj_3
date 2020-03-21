@@ -12,7 +12,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="12dp">
 
             <LinearLayout
                 android:id="@+id/toolbar_news"
@@ -93,15 +94,14 @@
                 android:id="@+id/t_thana_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#D5D4D4"
                 android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/num_taras_thana_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:background="@color/gray"/>
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_marginTop="2dp"
                 android:id="@+id/t_thana_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 android:textSize="18sp"
                 android:padding="8dp"
                 android:textStyle="bold"
-                android:background="@color/light_gray"/>
+                android:background="#E3E3E3"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -123,20 +123,26 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/r_tahna_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_raiganj_thana_1"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#D5D4D4"/>
 
             <TextView
+                android:id="@+id/r_tahna_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_raiganj_thana_2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3E3E3"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -149,20 +155,26 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/fire_number_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_fire_1"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#D5D4D4"/>
 
             <TextView
+                android:id="@+id/fire_number_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_fire_2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3E3E3"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -175,20 +187,26 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/t_u_number_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ta_hospital_1"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#D5D4D4"/>
 
             <TextView
+                android:id="@+id/t_u_number_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ta_hospital_2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3E3E3"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -201,20 +219,26 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/r_u_number_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ra_hospital_1"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#D5D4D4"/>
 
             <TextView
+                android:id="@+id/r_u_number_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ra_hospital_2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3E3E3"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -227,20 +251,26 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ambulance_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ambulance_1"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#D5D4D4"/>
 
             <TextView
+                android:id="@+id/ambulance_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/num_ambulance_2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3E3E3"/>
 
         </LinearLayout>
 

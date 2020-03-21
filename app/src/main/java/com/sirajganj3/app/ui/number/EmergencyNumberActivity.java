@@ -27,6 +27,21 @@ public class EmergencyNumberActivity extends AppCompatActivity {
         registerForContextMenu(emergencyNumberBinding.tThana1);
         registerForContextMenu(emergencyNumberBinding.tThana2);
 
+        registerForContextMenu(emergencyNumberBinding.rTahna1);
+        registerForContextMenu(emergencyNumberBinding.rTahna2);
+
+        registerForContextMenu(emergencyNumberBinding.fireNumber1);
+        registerForContextMenu(emergencyNumberBinding.fireNumber2);
+
+        registerForContextMenu(emergencyNumberBinding.tUNumber1);
+        registerForContextMenu(emergencyNumberBinding.tUNumber2);
+
+        registerForContextMenu(emergencyNumberBinding.rUNumber1);
+        registerForContextMenu(emergencyNumberBinding.rUNumber2);
+
+        registerForContextMenu(emergencyNumberBinding.ambulance1);
+        registerForContextMenu(emergencyNumberBinding.ambulance2);
+
         findViewById(R.id.home).setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
