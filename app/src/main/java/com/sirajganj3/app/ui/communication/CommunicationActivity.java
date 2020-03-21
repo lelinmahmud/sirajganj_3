@@ -121,7 +121,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initXml(View dialogView, AlertDialog alertDialog) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CommunicationActivity.this, android.R.layout.simple_spinner_item, vehiclesName);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(CommunicationActivity.this, android.R.layout.simple_spinner_item, vehiclesName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner vehiclesSpinner = dialogView.findViewById(R.id.vehicles_spinner);
         vehiclesSpinner.setAdapter(adapter);

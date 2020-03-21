@@ -205,7 +205,6 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
 
     private void submitProduct() {
-        //TODO
       //  mPresenter.postBazar(body);
         Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
     }
