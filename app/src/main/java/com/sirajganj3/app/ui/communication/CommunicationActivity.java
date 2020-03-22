@@ -16,14 +16,20 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.sirajganj3.app.R;
+import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.databinding.ActivityCommunicationBinding;
+import com.sirajganj3.app.ui.communication.model.Vehicle;
 import com.sirajganj3.app.ui.main.MainActivity;
 import com.sirajganj3.app.ui.opinion.OpinionActivity;
 import com.sirajganj3.app.ui.opinion.OpinionAdapter;
 
-public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.List;
+
+public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener,CommunicationView {
 
     ActivityCommunicationBinding communicationBinding;
+    CommunicationPresenter mPresenter;
+    Repository repository=new Repository(this);
     private String[] vehiclesName = {"-- যানবাহন বাছাই করুন --","মোটরসাইকেল", "ইজি বাইক", "প্রাইভেট কার/মাইক্রোবাস", "পিক আপ/ট্রাক", "বাস", "নৌযান"};
 
     @Override
@@ -31,7 +37,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_communication);
         communicationBinding = DataBindingUtil.setContentView(this, R.layout.activity_communication);
-
+        mPresenter=new CommunicationPresenter(this,repository);
+        mPresenter.loadTransport();
         communicationBinding.addVehicles.setOnClickListener(this);
         communicationBinding.home.setOnClickListener(this);
 
@@ -136,5 +143,20 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         boatInfoRv.setLayoutManager(new LinearLayoutManager(this));
         boatInfoRv.setHasFixedSize(true);
         boatInfoRv.setAdapter(new VehiclesAdapter(this));
+    }
+
+    @Override
+    public void loadTransport(List<Vehicle> vehicles) {
+
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
     }
 }

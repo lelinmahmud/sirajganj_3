@@ -6,6 +6,7 @@ import android.media.Image;
 
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.communication.model.Vehicle;
 import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
@@ -55,6 +56,9 @@ public class Repository {
     }
     public Flowable<List<JobInfo>> getJobs(){
         return apiService.getJobInfo();
+    }
+    public Flowable<List<Vehicle>> getTransport(){
+        return apiService.getTransport();
     }
 
     public Flowable<List<AreaInfo>> getArea(){

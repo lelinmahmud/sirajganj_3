@@ -5,6 +5,7 @@ import android.media.Image;
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.communication.model.Vehicle;
 import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
@@ -78,6 +79,9 @@ public interface APIService {
 
     @GET("ar/v1/opinion")
     Flowable<List<Opinion>> getOpinion();
+
+    @GET("acf/v3/transport")
+    Flowable<List<Vehicle>> getTransport();
 
     @FormUrlEncoded
     @POST("contact-form-7/v1/contact-forms/183/feedback")
