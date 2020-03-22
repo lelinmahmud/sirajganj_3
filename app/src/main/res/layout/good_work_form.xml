@@ -74,7 +74,7 @@
             android:autofillHints="@string/product_name_title"
             android:background="@null"
             android:hint="@string/thana"
-            android:inputType="number"
+            android:inputType="text"
             android:padding="12dp" />
     </LinearLayout>
 

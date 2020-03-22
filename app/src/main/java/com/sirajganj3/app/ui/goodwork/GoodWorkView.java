@@ -9,5 +9,7 @@ public interface GoodWorkView {
     void loadGoodWork(List<GoodWork> goodWorks);
     void showProgressBar();
     void hideProgressBar();
+    void showToast(String msg);
+
 
 }

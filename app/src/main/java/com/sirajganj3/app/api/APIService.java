@@ -6,6 +6,7 @@ import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
+import com.sirajganj3.app.ui.communication.model.Vehicle;
 import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
@@ -64,6 +65,8 @@ public interface APIService {
 
     @GET("acf/v3/bazar")
     Flowable<List<BazarInfo>> getBazarInfo();
+    @GET("acf/v3/transport")
+    Flowable<List<Vehicle>> getTransport();
 
     @GET("acf/v3/jobs")
     Flowable<List<JobInfo>> getJobInfo();
@@ -101,6 +104,17 @@ public interface APIService {
             @Part("price") RequestBody price,
             @Part("seller") RequestBody seller,
             @Part("phone") RequestBody phone,
+            @Part MultipartBody.Part file
+    );
+
+
+    @Multipart
+    @POST("contact-form-7/v1/contact-forms/187/feedback")
+    Flowable<BazarPostResponse> postGoodWork(
+            @Part("person-name") RequestBody name,
+            @Part("village") RequestBody village,
+            @Part("thana") RequestBody thana,
+            @Part("details") RequestBody details,
             @Part MultipartBody.Part file
     );
 
