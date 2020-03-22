@@ -54,7 +54,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
     private static final int GALLERY_REQUEST_CODE = 103;
     private static final int PICK_FROM_CAMERA = 105;
     MultipartBody.Part body;
-    String picturePathGallery;
+    String picturePath;
 
     ActivityBazarBinding bazarBinding;
     private Repository repository = new Repository(this);
@@ -193,10 +193,18 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_FROM_CAMERA && resultCode == RESULT_OK) {
+            assert data != null;
             Bundle extras = data.getExtras();
+            assert extras != null;
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             productImage.setImageBitmap(imageBitmap);
-            // convertToJpg(imageBitmap);
+            // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+            assert imageBitmap != null;
+            Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
+
+            // CALL THIS METHOD TO GET THE ACTUAL PATH
+            picturePath = getRealPathFromURI(getApplicationContext(), tempUri);
+
 
         } else if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
 
@@ -204,16 +212,23 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
             if (data != null) {
                 Uri selectedImageUri = data.getData();
-                picturePathGallery = getPath(getApplicationContext(), selectedImageUri);
+                picturePath = getRealPathFromURI(getApplicationContext(), selectedImageUri);
                 productImage.setImageURI(selectedImageUri);
-                Log.d(TAG, "Picture Path" + picturePathGallery);
+                Log.d(TAG, "Picture Path" + picturePath);
             }
 
         }
 
     }
 
-    public static String getPath(Context context, Uri uri) {
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public static String getRealPathFromURI(Context context, Uri uri) {
         String result = null;
         String[] proj = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
@@ -271,16 +286,15 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
         String productOwner = et_owner_name.getText().toString();
         String productPhone = et_phone.getText().toString();
 
-        if (isValid(productTitle, productQuantity, productPrice, productOwner, productPhone, picturePathGallery)) {
+        if (isValid(productTitle, productQuantity, productPrice, productOwner, productPhone, picturePath)) {
             alertDialog.dismiss();
             showProgressBar();
 
             //Create a file object using file path
-            File file = new File(picturePathGallery);
+            File file = new File(picturePath);
             RequestBody requestFile = RequestBody.create(file, MediaType.parse("multipart/form-data"));
             // MultipartBody.Part is used to send also the actual file name
             MultipartBody.Part body = MultipartBody.Part.createFormData("product-img", file.getName(), requestFile);
-
 
             //Create request body with text description and text media type
             RequestBody pName = RequestBody.create(productTitle, MediaType.parse("text/plain"));
@@ -318,8 +332,8 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
         Toast.makeText(this, "" + msg, Toast.LENGTH_SHORT).show();
     }
 
-    private boolean isValid(String productTitle, String productQuantity, String productPrice, String productOwner, String productPhone, String picturePathGallery) {
-        if (productTitle.isEmpty() || productQuantity.isEmpty() || productPrice.isEmpty() || productOwner.isEmpty() || productPhone.isEmpty() || picturePathGallery == null) {
+    private boolean isValid(String productTitle, String productQuantity, String productPrice, String productOwner, String productPhone, String picturePath) {
+        if (productTitle.isEmpty() || productQuantity.isEmpty() || productPrice.isEmpty() || productOwner.isEmpty() || productPhone.isEmpty() || picturePath == null) {
             return false;
         }
         return true;
