@@ -76,6 +76,10 @@ public class Repository {
         return apiService.postBazar(productName,quantity,price,seller,phone,image);
     }
 
+    public Flowable<BazarPostResponse>postOpinion(String title,String details){
+        return apiService.postOpinion(title,details);
+    }
+
     public Flowable<BazarPostResponse> postGoodWord(RequestBody name, RequestBody village, RequestBody thana, RequestBody details, MultipartBody.Part image){
         return apiService.postGoodWork(name,village,thana,details,image);
     }

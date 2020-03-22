@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sirajganj3.app.R;
@@ -24,6 +25,7 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
 
     ActivityOpinionBinding opinionBinding;
     OpinionPresenter mPresenter;
+    AlertDialog alertDialog;
     Repository repository=new Repository(this);
 
     @Override
@@ -42,7 +44,7 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
             ViewGroup viewGroup = findViewById(android.R.id.content);
             View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.opinion_form_view, viewGroup, false);
             builder.setView(dialogView);
-            AlertDialog alertDialog = builder.create();
+             alertDialog = builder.create();
             alertDialog.show();
             initXml(dialogView, alertDialog);
         });
@@ -55,12 +57,32 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
 
     private void initXml(View dialogView, AlertDialog alertDialog) {
         dialogView.findViewById(R.id.close).setOnClickListener(v -> alertDialog.dismiss());
-        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v -> submitOpinion());
+        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v -> submitOpinion(dialogView));
     }
 
-    private void submitOpinion() {
+    private void submitOpinion(View view) {
+        EditText et_title = view.findViewById(R.id.opinion_title);
+        EditText et_details = view.findViewById(R.id.opinion_descriptions);
+        String title=et_title.getText().toString();
+        String details=et_details.getText().toString();
+
+        if (isValid(title,details)){
+
+            mPresenter.opinionPost(title,details);
+            alertDialog.dismiss();
+        }
+        else {
+            showToast("Fill up the all Fields");
+
+        }
         //TODO
-        Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isValid(String title, String details) {
+        if (title.isEmpty() || details.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -79,5 +101,10 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
     public void hideProgressBar() {
         opinionBinding.opinionPb.setVisibility(View.INVISIBLE);
 
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 }

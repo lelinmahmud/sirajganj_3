@@ -8,5 +8,7 @@ public interface OpinionView {
     void opinonsInfo(List<Opinion> opinonInfos);
     void showProgressBar();
     void hideProgressBar();
+    void showToast(String msg);
+
 
 }

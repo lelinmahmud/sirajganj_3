@@ -34,11 +34,12 @@ public class OpinionAdapter extends RecyclerView.Adapter<OpinionAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull OpinionAdapter.ViewHolder holder, int position) {
         holder.userName.setText(""+opinions.get(position).getCommentAuthor());
-        holder.title.setText(""+opinions.get(position).getTitle());
-        holder.answerSubject.setText(""+opinions.get(position).getTitle());
-        holder.userName.setText(""+opinions.get(position).getContent());
-        holder.userName.setText(""+opinions.get(position).getCommentAuthor());
-        holder.userName.setText(""+opinions.get(position).getCommentAuthor());
+        holder.title_1.setText(""+opinions.get(position).getTitle());
+        holder.title_2.setText(""+opinions.get(position).getTitle());
+        holder.content.setText(""+opinions.get(position).getContent());
+        holder.reply.setText(""+opinions.get(position).getCommentContent());
+      //  holder.userName.setText(""+opinions.get(position).getCommentAuthor());
+       // holder.userName.setText(""+opinions.get(position).getCommentAuthor());
     }
 
     @Override
@@ -48,15 +49,15 @@ public class OpinionAdapter extends RecyclerView.Adapter<OpinionAdapter.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView userName, title,answerSubject, description,answer;
+        TextView userName, title_1,title_2,content,reply;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName = itemView.findViewById(R.id.user_name);
-            title = itemView.findViewById(R.id.opinion_subject_tv);
-            answerSubject = itemView.findViewById(R.id.answer_subject_tv);
-            description = itemView.findViewById(R.id.user_opinion_tv);
-            answer = itemView.findViewById(R.id.answer_opinion_tv);
+            title_1 = itemView.findViewById(R.id.title_one);
+            title_2 = itemView.findViewById(R.id.title_two);
+            content = itemView.findViewById(R.id.content);
+            reply = itemView.findViewById(R.id.reply);
 
 
         }

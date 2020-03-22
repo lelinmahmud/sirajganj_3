@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.ui.area.models.AreaInfo;
+import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
 
 import java.util.List;
 
@@ -26,6 +27,21 @@ public class OpinionPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::opinionSccess,this::onError);
+    }
+
+    public void opinionPost(String title,String details){
+        mView.showProgressBar();
+        repository.postOpinion(title,details)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::opinionPostSccess,this::onError);
+    }
+
+
+    void opinionPostSccess(BazarPostResponse response){
+        mView.hideProgressBar();
+        Log.e(TAG, "Area Sccess: "+response.getMessage() );
+        mView.showToast(response.getMessage());
     }
 
     void opinionSccess(List<Opinion> opinions){

@@ -116,7 +116,7 @@ public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,
             File file = new File(picturePathGallery);
             RequestBody requestFile = RequestBody.create(file, MediaType.parse("multipart/form-data"));
             // MultipartBody.Part is used to send also the actual file name
-            MultipartBody.Part body = MultipartBody.Part.createFormData("product-img", file.getName(), requestFile);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("work-img", file.getName(), requestFile);
 
 
             //Create request body with text description and text media type

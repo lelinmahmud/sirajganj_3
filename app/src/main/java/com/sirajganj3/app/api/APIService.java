@@ -118,5 +118,12 @@ public interface APIService {
             @Part MultipartBody.Part file
     );
 
+    @FormUrlEncoded
+    @POST("contact-form-7/v1/contact-forms/281/feedback")
+    Flowable<BazarPostResponse> postOpinion(
+            @Field("Title") String title,
+            @Field("your-message") String msg
+    );
+
 
 }
