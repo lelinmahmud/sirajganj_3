@@ -8,4 +8,5 @@ public interface BazarView {
     void loadBazarInfo(List<BazarInfo> bazarInfo);
     void showProgressBar();
     void hideProgressBar();
+    void showToast(String msg);
 }
