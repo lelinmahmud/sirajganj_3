@@ -118,6 +118,14 @@ public interface APIService {
             @Part MultipartBody.Part file
     );
 
+    @Multipart
+    @POST("contact-form-7/v1/contact-forms/368/feedback")
+    Flowable<BazarPostResponse> postVehicle(
+            @Part("t-type") RequestBody type,
+            @Part("driver") RequestBody driver,
+            @Part("phone") RequestBody phone,
+            @Part MultipartBody.Part file
+    );
     @FormUrlEncoded
     @POST("contact-form-7/v1/contact-forms/281/feedback")
     Flowable<BazarPostResponse> postOpinion(

@@ -83,5 +83,8 @@ public class Repository {
     public Flowable<BazarPostResponse> postGoodWord(RequestBody name, RequestBody village, RequestBody thana, RequestBody details, MultipartBody.Part image){
         return apiService.postGoodWork(name,village,thana,details,image);
     }
+    public Flowable<BazarPostResponse> postVehicle(RequestBody type, RequestBody driver, RequestBody phone, MultipartBody.Part image){
+        return apiService.postVehicle(type,driver,phone,image);
+    }
 
 }

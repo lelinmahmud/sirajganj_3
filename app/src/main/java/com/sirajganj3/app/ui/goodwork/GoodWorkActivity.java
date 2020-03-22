@@ -1,12 +1,5 @@
 package com.sirajganj3.app.ui.goodwork;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -24,18 +17,21 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.sirajganj3.app.R;
 import com.sirajganj3.app.api.Repository;
 import com.sirajganj3.app.databinding.ActivityGoodWorkBinding;
-import com.sirajganj3.app.ui.area.MyAreaActivity;
-import com.sirajganj3.app.ui.area.MyAreaAdapter;
-import com.sirajganj3.app.ui.area.models.AreaInfo;
-import com.sirajganj3.app.ui.areaDetails.AreaDetailsActivity;
 import com.sirajganj3.app.ui.goodWorkDetails.GoodworkDetailsActivity;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
-import com.sirajganj3.app.ui.job.JobsActivity;
 import com.sirajganj3.app.ui.main.MainActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.List;
 
@@ -43,6 +39,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+
+import static com.sirajganj3.app.ui.bazar.BazarActivity.getRealPathFromURI;
 
 public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,RecyclerViewItemClickListener{
     ActivityGoodWorkBinding goodWorkBinding;
@@ -52,9 +50,10 @@ public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,
     private static final int GALLERY_REQUEST_CODE = 103;
     private static final int PICK_FROM_CAMERA = 105;
     MultipartBody.Part body;
-    String picturePathGallery;
+    String picturePath;
     CircleImageView productImage;
     AlertDialog alertDialog;
+
 
 
     Repository repository=new Repository(this);
@@ -108,12 +107,12 @@ public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,
         String thana = et_thana.getText().toString();
         String details = et_details.getText().toString();
 
-        if (isValid(name, village, thana, details, picturePathGallery)) {
+        if (isValid(name, village, thana, details, picturePath)) {
             alertDialog.dismiss();
             showProgressBar();
 
             //Create a file object using file path
-            File file = new File(picturePathGallery);
+            File file = new File(picturePath);
             RequestBody requestFile = RequestBody.create(file, MediaType.parse("multipart/form-data"));
             // MultipartBody.Part is used to send also the actual file name
             MultipartBody.Part body = MultipartBody.Part.createFormData("work-img", file.getName(), requestFile);
@@ -257,10 +256,17 @@ public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_FROM_CAMERA && resultCode == RESULT_OK) {
+            assert data != null;
             Bundle extras = data.getExtras();
+            assert extras != null;
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             productImage.setImageBitmap(imageBitmap);
-            // convertToJpg(imageBitmap);
+            // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+            assert imageBitmap != null;
+            Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
+
+            // CALL THIS METHOD TO GET THE ACTUAL PATH
+            picturePath = getRealPathFromURI(getApplicationContext(), tempUri);
 
         } else if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
 
@@ -268,13 +274,20 @@ public class GoodWorkActivity extends AppCompatActivity implements GoodWorkView,
 
             if (data != null) {
                 Uri selectedImageUri = data.getData();
-                picturePathGallery = getPath(getApplicationContext(), selectedImageUri);
+                picturePath = getPath(getApplicationContext(), selectedImageUri);
                 productImage.setImageURI(selectedImageUri);
-                Log.d(TAG, "Picture Path" + picturePathGallery);
+                Log.d(TAG, "Picture Path" + picturePath);
             }
 
         }
 
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
     public static String getPath(Context context, Uri uri) {

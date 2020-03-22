@@ -9,4 +9,5 @@ public interface CommunicationView {
     void loadTransport(List<Vehicle> vehicles);
     void showProgressBar();
     void hideProgressBar();
+    void showToast(String msg);
 }

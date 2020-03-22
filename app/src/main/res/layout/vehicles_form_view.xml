@@ -44,24 +44,24 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_rectangle"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/bg_rectangle"-->
+<!--        android:orientation="vertical">-->
 
-        <EditText
-            android:id="@+id/vehicles_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/type_of_vehicles"
-            android:background="@null"
-            android:hint="@string/type_of_vehicles"
-            android:inputType="text"
-            android:padding="12dp" />
+<!--        <EditText-->
+<!--            android:id="@+id/vehicles_name"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:autofillHints="@string/type_of_vehicles"-->
+<!--            android:background="@null"-->
+<!--            android:hint="@string/type_of_vehicles"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="12dp" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
