@@ -53,6 +53,7 @@ public class OpinionAdapter extends RecyclerView.Adapter<OpinionAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             userName = itemView.findViewById(R.id.user_name);
             title_1 = itemView.findViewById(R.id.title_one);
             title_2 = itemView.findViewById(R.id.title_two);
