@@ -1,11 +1,11 @@
 package com.sirajganj3.app.api;
 
 import android.content.Context;
-import android.media.Image;
 
 
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
 import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
@@ -19,6 +19,7 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 
 public class Repository {
@@ -67,7 +68,7 @@ public class Repository {
     public Flowable<JobPostResponse> postJob(String postName,String company,String salary,String owner,String phone){
         return apiService.postJob(postName,company,salary,owner,phone);
     }
-    public Flowable<JobPostResponse> postBazar(String productName, String quantity, String price, String seller, String phone, MultipartBody.Part image){
+    public Flowable<BazarPostResponse> postBazar(RequestBody productName, RequestBody quantity, RequestBody price, RequestBody seller, RequestBody phone, MultipartBody.Part image){
         return apiService.postBazar(productName,quantity,price,seller,phone,image);
     }
 

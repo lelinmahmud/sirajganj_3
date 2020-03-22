@@ -40,12 +40,12 @@ public class JobsActivity extends AppCompatActivity implements JobView {
 
 
         jobsBinding.addBtn.setOnClickListener(v -> {
-             builder = new AlertDialog.Builder(JobsActivity.this);
+            builder = new AlertDialog.Builder(JobsActivity.this);
             builder.setCancelable(false);
             ViewGroup viewGroup = findViewById(android.R.id.content);
             View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.job_form_view, viewGroup, false);
             builder.setView(dialogView);
-             alertDialog = builder.create();
+            alertDialog = builder.create();
             alertDialog.show();
             initXml(dialogView, alertDialog);
         });
@@ -65,7 +65,7 @@ public class JobsActivity extends AppCompatActivity implements JobView {
     }
 
     private void submitJob(View view) {
-        //TODO
+
         EditText et_post=view.findViewById(R.id.job_title);
         EditText et_company=view.findViewById(R.id.company_name);
         EditText et_sallary=view.findViewById(R.id.price);

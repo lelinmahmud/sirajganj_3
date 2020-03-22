@@ -5,6 +5,7 @@ import android.media.Image;
 import com.sirajganj3.app.ui.area.models.AreaInfo;
 import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
+import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
 import com.sirajganj3.app.ui.goodWorkDetails.models.GoodWorkDetails;
 import com.sirajganj3.app.ui.goodwork.models.GoodWork;
 import com.sirajganj3.app.ui.job.models.JobInfo;
@@ -22,6 +23,8 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -92,14 +95,13 @@ public interface APIService {
 
     @Multipart
     @POST("contact-form-7/v1/contact-forms/173/feedback")
-    Flowable<JobPostResponse> postBazar(
-            @Field("product-name") String productName,
-            @Field("p-quantity") String quantity,
-            @Field("price") String price,
-            @Field("seller") String seller,
-            @Field("phone") String phone,
-            @Part("product-img") MultipartBody.Part product_img
-
+    Flowable<BazarPostResponse> postBazar(
+            @Part("product-name") RequestBody productName,
+            @Part("p-quantity") RequestBody quantity,
+            @Part("price") RequestBody price,
+            @Part("seller") RequestBody seller,
+            @Part("phone") RequestBody phone,
+            @Part MultipartBody.Part file
     );
 
 

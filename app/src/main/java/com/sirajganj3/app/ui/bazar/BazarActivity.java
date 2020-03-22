@@ -8,9 +8,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -20,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sirajganj3.app.R;
@@ -46,17 +49,19 @@ import okhttp3.RequestBody;
 public class BazarActivity extends AppCompatActivity implements BazarView {
 
     private static final String TAG = "BazarActivity";
-    private static final int GALLERY_REQUEST_CODE = 103;
     private static final int CAMERA_PERMISSION_CODE = 104;
+    private static final int GALLERY_PERMISSION_CODE = 105;
+    private static final int GALLERY_REQUEST_CODE = 103;
     private static final int PICK_FROM_CAMERA = 105;
     MultipartBody.Part body;
-
+    String picturePathGallery;
 
     ActivityBazarBinding bazarBinding;
     private Repository repository = new Repository(this);
     private BazarPresenter mPresenter;
     View dialogView;
     CircleImageView productImage;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +86,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
             ViewGroup viewGroup = findViewById(android.R.id.content);
             dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.product_advertisement_form, viewGroup, false);
             builder.setView(dialogView);
-            AlertDialog alertDialog = builder.create();
+            alertDialog = builder.create();
             alertDialog.show();
             initXml(dialogView, alertDialog);
         });
@@ -89,41 +94,25 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
     private void initXml(View dialogView, AlertDialog alertDialog) {
         dialogView.findViewById(R.id.close).setOnClickListener(v -> alertDialog.dismiss());
-        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v -> submitProduct());
+        dialogView.findViewById(R.id.btn_submit).setOnClickListener(v -> submitProduct(dialogView));
 
         productImage = dialogView.findViewById(R.id.product_img);
         productImage.setOnClickListener(v -> popUpOptionDialog());
     }
 
     private void popUpOptionDialog() {
-        final String[] option = {"Take Picture From Gallery", "Take Picture by Camera "};
+        final String[] option = {"গ্যালারী থেকে ছবি বাছাই করুন", "ক্যামেরা দ্বারা ছবি তুলুন"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose Option");
         builder.setSingleChoiceItems(option, -1, (dialog, which) -> {
 
             if (which == 0) {
-                pickFromGallery();
+                checkPermission("Storage");
                 dialog.dismiss();
             }
+
             if (which == 1) {
                 Log.d(TAG, "onClick: Camera");
-                //openCamera();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-                    if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
-                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-
-                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permission, CAMERA_PERMISSION_CODE);
-
-                    } else {
-                        //Permission already granted
-                        openCamera();
-                    }
-                } else {
-                    //System OS < Marshmallow
-                    openCamera();
-                }
+                checkPermission("Camera");
                 dialog.dismiss();
             }
         });
@@ -132,6 +121,49 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
     }
 
+    private void checkPermission(String storage) {
+
+        if (storage.equals("Storage")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                        || checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+
+                    String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, GALLERY_PERMISSION_CODE);
+
+                } else {
+                    //Permission already granted
+                    openGallery();
+                }
+            } else {
+                //System OS < Marshmallow
+                openGallery();
+            }
+        } else {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ||
+                        checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                        || checkCallingOrSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+
+                    String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, CAMERA_PERMISSION_CODE);
+
+                } else {
+                    //Permission already granted
+                    openCamera();
+                }
+            } else {
+                //System OS < Marshmallow
+                openCamera();
+            }
+
+        }
+
+    }
 
     private void openCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -142,7 +174,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
     }
 
-    private void pickFromGallery() {
+    private void openGallery() {
         //Create an Intent with action as ACTION_PICK
         Intent intent = new Intent(Intent.ACTION_PICK);
         // Sets the type as image/*. This ensures only components of type image are selected
@@ -164,28 +196,38 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             productImage.setImageBitmap(imageBitmap);
-           // convertToJpg(imageBitmap);
+            // convertToJpg(imageBitmap);
 
         } else if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
 
             Log.d(TAG, "onActivityResult: Pick form gallery");
 
             if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    productImage.setImageBitmap(bitmap);
-                  //  convertToJpg(bitmap);
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
+                Uri selectedImageUri = data.getData();
+                picturePathGallery = getPath(getApplicationContext(), selectedImageUri);
+                productImage.setImageURI(selectedImageUri);
+                Log.d(TAG, "Picture Path" + picturePathGallery);
             }
 
         }
 
+    }
+
+    public static String getPath(Context context, Uri uri) {
+        String result = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                int column_index = cursor.getColumnIndexOrThrow(proj[0]);
+                result = cursor.getString(column_index);
+            }
+            cursor.close();
+        }
+        if (result == null) {
+            result = "Not found";
+        }
+        return result;
     }
 
     @Override
@@ -199,14 +241,59 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
                     //Permission from pop is denied
                     Toast.makeText(this, "Permission from pop is denied", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            }
+            case GALLERY_PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //permission from pop is granted
+                    openGallery();
+                } else {
+                    //Permission from pop is denied
+                    Toast.makeText(this, "Permission from pop is denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
             }
         }
     }
 
 
-    private void submitProduct() {
-      //  mPresenter.postBazar(body);
-        Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show();
+    private void submitProduct(View view) {
+
+        EditText et_product_title = view.findViewById(R.id.product_title);
+        EditText et_amount = view.findViewById(R.id.amount);
+        EditText et_price = view.findViewById(R.id.price);
+        EditText et_owner_name = view.findViewById(R.id.product_owner_name);
+        EditText et_phone = view.findViewById(R.id.phone_num);
+
+        String productTitle = et_product_title.getText().toString();
+        String productQuantity = et_amount.getText().toString();
+        String productPrice = et_price.getText().toString();
+        String productOwner = et_owner_name.getText().toString();
+        String productPhone = et_phone.getText().toString();
+
+        if (isValid(productTitle, productQuantity, productPrice, productOwner, productPhone, picturePathGallery)) {
+            alertDialog.dismiss();
+            showProgressBar();
+
+            //Create a file object using file path
+            File file = new File(picturePathGallery);
+            RequestBody requestFile = RequestBody.create(file, MediaType.parse("multipart/form-data"));
+            // MultipartBody.Part is used to send also the actual file name
+            MultipartBody.Part body = MultipartBody.Part.createFormData("product-img", file.getName(), requestFile);
+
+
+            //Create request body with text description and text media type
+            RequestBody pName = RequestBody.create(productTitle, MediaType.parse("text/plain"));
+            RequestBody quantity = RequestBody.create(productQuantity, MediaType.parse("text/plain"));
+            RequestBody price = RequestBody.create(productPrice, MediaType.parse("text/plain"));
+            RequestBody owner = RequestBody.create(productOwner, MediaType.parse("text/plain"));
+            RequestBody phone = RequestBody.create(productPhone, MediaType.parse("text/plain"));
+
+            mPresenter.postBazar(pName, quantity, price, owner, phone, body);
+
+        } else {
+            showToast("Fill up the all Fields");
+        }
     }
 
     @Override
@@ -226,36 +313,17 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
 
     }
 
-//    private void convertToJpg(Bitmap bitmap){
-//        File file =bitmapToFile(bitmap);
-//        RequestBody requestFile =
-//                RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//
-//// MultipartBody.Part is used to send also the actual file name
-//         body =
-//                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
-//
-//// add another part within the multipart request
-//        RequestBody fullName =
-//                RequestBody.create(MediaType.parse("multipart/form-data"), file.getName());
-//    }
-//
-//    private File bitmapToFile(Bitmap bitmap1){
-//        File f = new File(context.getCacheDir(), filename);
-//        f.createNewFile();
-//
-////Convert bitmap to byte array
-//        Bitmap bitmap =bitmap;
-//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-//        byte[] bitmapdata = bos.toByteArray();
-//
-////write the bytes in file
-//        FileOutputStream fos = new FileOutputStream(f);
-//        fos.write(bitmapdata);
-//        fos.flush();
-//        fos.close();
-//    }
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(this, "" + msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isValid(String productTitle, String productQuantity, String productPrice, String productOwner, String productPhone, String picturePathGallery) {
+        if (productTitle.isEmpty() || productQuantity.isEmpty() || productPrice.isEmpty() || productOwner.isEmpty() || productPhone.isEmpty() || picturePathGallery == null) {
+            return false;
+        }
+        return true;
+    }
 
 
 }
