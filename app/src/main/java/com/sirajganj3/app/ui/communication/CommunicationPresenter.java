@@ -8,6 +8,7 @@ import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
 import com.sirajganj3.app.ui.communication.model.Vehicle;
 import com.sirajganj3.app.ui.job.models.JobPostResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

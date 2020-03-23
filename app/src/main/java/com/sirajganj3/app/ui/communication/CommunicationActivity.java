@@ -39,6 +39,7 @@ import com.sirajganj3.app.ui.opinion.OpinionAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -61,6 +62,14 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     CircleImageView productImage;
     AlertDialog alertDialog;
     int vehicleType;
+    private List<Vehicle> vehicles=new ArrayList<>();
+    private List<Vehicle> bike=new ArrayList<>();
+    private List<Vehicle> easyBike=new ArrayList<>();
+    private List<Vehicle> car=new ArrayList<>();
+    private List<Vehicle> pickup=new ArrayList<>();
+    private List<Vehicle> bus=new ArrayList<>();
+    private List<Vehicle> boat=new ArrayList<>();
+
     private String[] vehiclesName = {"-- যানবাহন বাছাই করুন --","মোটরসাইকেল", "ইজি বাইক", "প্রাইভেট কার/মাইক্রোবাস", "পিক আপ/ট্রাক", "বাস", "নৌযান"};
 
     @Override
@@ -107,7 +116,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.boatInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.boatInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.boatInfoRv);
+                    setDataOnRecyclerView(communicationBinding.boatInfoRv,boat);
                 }
                 break;
 
@@ -116,7 +125,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.busInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.busInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.busInfoRv);
+                    setDataOnRecyclerView(communicationBinding.busInfoRv,bus);
                 }
                 break;
 
@@ -125,7 +134,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.pickUpInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.pickUpInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.pickUpInfoRv);
+                    setDataOnRecyclerView(communicationBinding.pickUpInfoRv,pickup);
                 }
                 break;
 
@@ -134,7 +143,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.privateCarInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.privateCarInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.privateCarInfoRv);
+                    setDataOnRecyclerView(communicationBinding.privateCarInfoRv,car);
                 }
                 break;
 
@@ -143,7 +152,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.easyBikeInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.easyBikeInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.easyBikeInfoRv);
+                    setDataOnRecyclerView(communicationBinding.easyBikeInfoRv,easyBike);
                 }
                 break;
 
@@ -152,7 +161,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     communicationBinding.motorBikeInfo.setVisibility(View.GONE);
                 } else {
                     communicationBinding.motorBikeInfo.setVisibility(View.VISIBLE);
-                    setDataOnRecyclerView(communicationBinding.motorBikeInfoRv);
+                    setDataOnRecyclerView(communicationBinding.motorBikeInfoRv,bike);
                 }
                 break;
         }
@@ -212,10 +221,10 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void setDataOnRecyclerView(RecyclerView boatInfoRv) {
+    private void setDataOnRecyclerView(RecyclerView boatInfoRv,List<Vehicle> list) {
         boatInfoRv.setLayoutManager(new LinearLayoutManager(this));
         boatInfoRv.setHasFixedSize(true);
-        boatInfoRv.setAdapter(new VehiclesAdapter(this));
+        boatInfoRv.setAdapter(new VehiclesAdapter(this,list));
     }
 
 
@@ -400,8 +409,28 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void loadTransport(List<Vehicle> vehicles) {
+    public void loadTransport(List<Vehicle> vehicle) {
+       vehicles=vehicle;
+       for (int i=0;i<vehicles.size();i++){
+           if (vehiclesName[1].equals(vehicles.get(i).getAcf().getTransportType())){
+               bike.add(vehicles.get(i));
+           }
+           else if (vehiclesName[2].equals(vehicles.get(i).getAcf().getTransportType())){
+                easyBike.add(vehicles.get(i));
+           }
+           else if (vehiclesName[3].equals(vehicles.get(i).getAcf().getTransportType())){
+                car.add(vehicles.get(i));
+           }
+           else if (vehiclesName[4].equals(vehicles.get(i).getAcf().getTransportType())){
+                pickup.add(vehicles.get(i));
+           }
+           else if (vehiclesName[5].equals(vehicles.get(i).getAcf().getTransportType())){
+                bus.add(vehicles.get(i));
+           }     else if (vehiclesName[6].equals(vehicles.get(i).getAcf().getTransportType())){
+                boat.add(vehicles.get(i));
+           }
 
+       }
     }
 
     @Override
