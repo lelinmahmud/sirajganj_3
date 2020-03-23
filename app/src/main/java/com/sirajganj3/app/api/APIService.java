@@ -1,9 +1,6 @@
 package com.sirajganj3.app.api;
 
-import android.media.Image;
-
 import com.sirajganj3.app.ui.area.models.AreaInfo;
-import com.sirajganj3.app.ui.areaDetails.AreaNews;
 import com.sirajganj3.app.ui.bazar.models.BazarInfo;
 import com.sirajganj3.app.ui.bazar.models.BazarPostResponse;
 import com.sirajganj3.app.ui.communication.model.Vehicle;
@@ -18,6 +15,7 @@ import com.sirajganj3.app.ui.login.RegisterResponse;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
+import com.sirajganj3.app.ui.number.model.EmergencyNumberInfo;
 import com.sirajganj3.app.ui.opinion.Opinion;
 
 import java.util.List;
@@ -25,7 +23,6 @@ import java.util.List;
 import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -43,48 +40,64 @@ public interface APIService {
     @GET("home-contents/{outlet_id}")
     Flowable<Object> getHomeContents(@Path("outlet_id") String outletId);
 
+    //GET NEWS
     @GET("ar/v1/posts")
     Flowable<List<News>> getAllNews();
 
+    //GET NEWS DETAILS
     @GET("ar/v1/single/{news_id}")
     Flowable<NewsDetails> getNewsDetails(@Path("news_id") int newsId);
 
+    //LOGIN
     @FormUrlEncoded
     @POST("jwt-auth/v1/token")
     Flowable<User> login
             (@Field("username") String username,
              @Field("password") String password);
 
+    //LOST PASSWORD
     @POST("wp/v2/users/lostpassword")
     Flowable<ForgotPasswordResponse> lostpassword
             (@Body ForgotPassword forgotPassword);
 
+    //REGISTER
     @POST("wp/v2/users/register")
     Flowable<RegisterResponse> registerUser
             (@Body Register register);
 
+    //GET BAZAR
     @GET("acf/v3/bazar")
     Flowable<List<BazarInfo>> getBazarInfo();
+
+    //GET VEHICLES
     @GET("acf/v3/transport")
     Flowable<List<Vehicle>> getTransport();
 
+    //GET JOB
     @GET("acf/v3/jobs")
     Flowable<List<JobInfo>> getJobInfo();
 
+    //GET AREA
     @GET("ar/v1/area")
     Flowable<List<AreaInfo>> getAreaInfo();
 
+    //GET GOOD WORK
     @GET("acf/v3/good_work")
     Flowable<List<GoodWork>> getGoodWork();
 
-
-
+    //GET GOOD WORK DETAILS
     @GET("acf/v3/good_work/{news_id}")
     Flowable<GoodWorkDetails> getGoodWorkDetails(@Path("news_id") int newsId);
 
+    //GET OPINION
     @GET("ar/v1/opinion")
     Flowable<List<Opinion>> getOpinion();
 
+    //GET EMERGENCY NUMBER
+    @GET("acf/v3/emergency")
+    Flowable<List<EmergencyNumberInfo>> getEmergencyNumber();
+
+    //POST JOB
     @FormUrlEncoded
     @POST("contact-form-7/v1/contact-forms/183/feedback")
     Flowable<JobPostResponse> postJob(
@@ -96,6 +109,7 @@ public interface APIService {
 
     );
 
+    //POST BAZAR
     @Multipart
     @POST("contact-form-7/v1/contact-forms/173/feedback")
     Flowable<BazarPostResponse> postBazar(
@@ -107,7 +121,7 @@ public interface APIService {
             @Part MultipartBody.Part file
     );
 
-
+    //POST GOOD WORK
     @Multipart
     @POST("contact-form-7/v1/contact-forms/187/feedback")
     Flowable<BazarPostResponse> postGoodWork(
@@ -118,6 +132,7 @@ public interface APIService {
             @Part MultipartBody.Part file
     );
 
+    //POST Vehicles
     @Multipart
     @POST("contact-form-7/v1/contact-forms/368/feedback")
     Flowable<BazarPostResponse> postVehicle(
@@ -126,6 +141,8 @@ public interface APIService {
             @Part("phone") RequestBody phone,
             @Part MultipartBody.Part file
     );
+
+    // POST Opinion
     @FormUrlEncoded
     @POST("contact-form-7/v1/contact-forms/281/feedback")
     Flowable<BazarPostResponse> postOpinion(

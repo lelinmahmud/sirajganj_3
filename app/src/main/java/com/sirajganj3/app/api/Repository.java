@@ -14,6 +14,8 @@ import com.sirajganj3.app.ui.job.models.JobPostResponse;
 import com.sirajganj3.app.ui.login.User;
 import com.sirajganj3.app.ui.news.model.News;
 import com.sirajganj3.app.ui.news.model.NewsDetails;
+import com.sirajganj3.app.ui.number.model.EmergencyNumberInfo;
+import com.sirajganj3.app.ui.number.model.EmergencyNumberResponse;
 import com.sirajganj3.app.ui.opinion.Opinion;
 
 import java.util.List;
@@ -35,56 +37,68 @@ public class Repository {
         return apiService.getHomeContents(outletId);
     }
 
-    public Flowable<List<News>> allNews(){
+    public Flowable<List<News>> allNews() {
         return apiService.getAllNews();
     }
 
-    public Flowable<NewsDetails> newsDetails(int newsId){
+    public Flowable<NewsDetails> newsDetails(int newsId) {
         return apiService.getNewsDetails(newsId);
     }
-    public Flowable<GoodWorkDetails> goodWorkDetails(int newsId){
+
+    public Flowable<GoodWorkDetails> goodWorkDetails(int newsId) {
         return apiService.getGoodWorkDetails(newsId);
     }
-    public Flowable<User> login(String username, String password){
-        return apiService.login(username,password);
+
+    public Flowable<User> login(String username, String password) {
+        return apiService.login(username, password);
     }
 
-    public Flowable<List<BazarInfo>> getBazar(){
+    public Flowable<List<BazarInfo>> getBazar() {
         return apiService.getBazarInfo();
     }
-    public Flowable<List<Opinion>> getOpinion(){
+
+    public Flowable<List<Opinion>> getOpinion() {
         return apiService.getOpinion();
     }
-    public Flowable<List<JobInfo>> getJobs(){
+
+    public Flowable<List<JobInfo>> getJobs() {
         return apiService.getJobInfo();
     }
-    public Flowable<List<Vehicle>> getTransport(){
+
+    public Flowable<List<Vehicle>> getTransport() {
         return apiService.getTransport();
     }
 
-    public Flowable<List<AreaInfo>> getArea(){
+    public Flowable<List<AreaInfo>> getArea() {
         return apiService.getAreaInfo();
     }
-    public Flowable<List<GoodWork>> getGoodWork(){
+
+    public Flowable<List<GoodWork>> getGoodWork() {
         return apiService.getGoodWork();
     }
 
-    public Flowable<JobPostResponse> postJob(String postName,String company,String salary,String owner,String phone){
-        return apiService.postJob(postName,company,salary,owner,phone);
-    }
-    public Flowable<BazarPostResponse> postBazar(RequestBody productName, RequestBody quantity, RequestBody price, RequestBody seller, RequestBody phone, MultipartBody.Part image){
-        return apiService.postBazar(productName,quantity,price,seller,phone,image);
+    public Flowable<List<EmergencyNumberInfo>> getEmergencyNumber() {
+        return apiService.getEmergencyNumber();
     }
 
-    public Flowable<BazarPostResponse>postOpinion(String title,String details){
-        return apiService.postOpinion(title,details);
+    public Flowable<JobPostResponse> postJob(String postName, String company, String salary, String owner, String phone) {
+        return apiService.postJob(postName, company, salary, owner, phone);
     }
 
-    public Flowable<BazarPostResponse> postGoodWord(RequestBody name, RequestBody village, RequestBody thana, RequestBody details, MultipartBody.Part image){
-        return apiService.postGoodWork(name,village,thana,details,image);
+    public Flowable<BazarPostResponse> postBazar(RequestBody productName, RequestBody quantity, RequestBody price, RequestBody seller, RequestBody phone, MultipartBody.Part image) {
+        return apiService.postBazar(productName, quantity, price, seller, phone, image);
     }
-    public Flowable<BazarPostResponse> postVehicle(RequestBody type, RequestBody driver, RequestBody phone, MultipartBody.Part image){
-        return apiService.postVehicle(type,driver,phone,image);
+
+    public Flowable<BazarPostResponse> postOpinion(String title, String details) {
+        return apiService.postOpinion(title, details);
+    }
+
+    public Flowable<BazarPostResponse> postGoodWord(RequestBody name, RequestBody village, RequestBody thana, RequestBody details, MultipartBody.Part image) {
+        return apiService.postGoodWork(name, village, thana, details, image);
+    }
+
+    public Flowable<BazarPostResponse> postVehicle(RequestBody type, RequestBody driver, RequestBody phone, MultipartBody.Part image) {
+        return apiService.postVehicle(type, driver, phone, image);
     }
 
 }
