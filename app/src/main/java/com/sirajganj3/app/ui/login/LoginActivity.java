@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        mLoginBinding.loginBtn.setOnClickListener(this);
 //        mLoginBinding.registerBtn.setOnClickListener(this);
 
+
     }
 
 
