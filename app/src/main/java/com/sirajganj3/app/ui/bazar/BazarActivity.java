@@ -325,6 +325,7 @@ public class BazarActivity extends AppCompatActivity implements BazarView {
     public void hideProgressBar() {
         bazarBinding.bazarPb.setVisibility(View.INVISIBLE);
 
+
     }
 
     @Override
