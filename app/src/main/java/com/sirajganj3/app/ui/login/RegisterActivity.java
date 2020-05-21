@@ -21,12 +21,32 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         registerBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 
         registerBinding.backToLogin.setOnClickListener(this);
+        registerBinding.register.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(loginIntent);
+
+        int id = v.getId();
+
+        if (id == R.id.back_to_login) {
+            Intent loginIntent = new Intent(this, LoginActivity.class);
+            loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(loginIntent);
+        } else if (id == R.id.register) {
+
+            String mobile = registerBinding.phoneNumber.getText().toString().trim();
+
+            if (mobile.isEmpty() || mobile.length() < 11) {
+                registerBinding.phoneNumber.setError("Enter a valid mobile");
+                registerBinding.phoneNumber.requestFocus();
+                return;
+            }
+
+            Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent);
+        }
     }
+
 }

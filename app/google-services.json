@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1095700067187",
+    "firebase_url": "https://sirajganj3-50e27.firebaseio.com",
+    "project_id": "sirajganj3-50e27",
+    "storage_bucket": "sirajganj3-50e27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095700067187:android:81add69a1b406fcffccb06",
+        "android_client_info": {
+          "package_name": "com.sirajganj3.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095700067187-chde64qocl7edci322kpifgse6i3dqhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sirajganj3.app",
+            "certificate_hash": "c2488a9559299716154c24466fbea8c0ac268919"
+          }
+        },
+        {
+          "client_id": "1095700067187-touta9orch37hbrcbpcnn2ashvnh7v8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwNkbLGDKethf_udfoQm-dFjVA-gzwDn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095700067187-touta9orch37hbrcbpcnn2ashvnh7v8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

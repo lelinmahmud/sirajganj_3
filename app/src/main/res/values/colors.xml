@@ -10,6 +10,7 @@
     <color name="dark_gray">#7B8A99</color>
     <color name="dark_gray_light">#BFC3CC</color>
     <color name="blue">#3096D2</color>
+    <color name="login_blue">#4CC2FC</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 </resources>

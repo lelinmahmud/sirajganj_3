@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "736192364921",
+    "firebase_url": "https://sirajganj3-1035e.firebaseio.com",
+    "project_id": "sirajganj3-1035e",
+    "storage_bucket": "sirajganj3-1035e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736192364921:android:aaac714bd9b89dd4296fa8",
+        "android_client_info": {
+          "package_name": "com.sirajganj3.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736192364921-dqe2ng277uk73r77dtu3r76dc15ej0md.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrBm5LXHMv0hoI6pIg-V20-b_6ZH9eOP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736192364921-dqe2ng277uk73r77dtu3r76dc15ej0md.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
