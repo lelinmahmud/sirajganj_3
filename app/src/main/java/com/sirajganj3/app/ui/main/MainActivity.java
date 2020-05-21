@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.sirajganj3.app.R;
 import com.sirajganj3.app.databinding.ActivityMainBinding;
 import com.sirajganj3.app.ui.area.MyAreaActivity;
@@ -15,9 +16,11 @@ import com.sirajganj3.app.ui.bazar.BazarActivity;
 import com.sirajganj3.app.ui.communication.CommunicationActivity;
 import com.sirajganj3.app.ui.goodwork.GoodWorkActivity;
 import com.sirajganj3.app.ui.job.JobsActivity;
+import com.sirajganj3.app.ui.login.LoginActivity;
 import com.sirajganj3.app.ui.news.NewsActivity;
 import com.sirajganj3.app.ui.number.EmergencyNumberActivity;
 import com.sirajganj3.app.ui.opinion.OpinionActivity;
+import com.sirajganj3.app.utils.MySharedPrefarance;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activityMainBinding.goodWorkItem.setOnClickListener(this);
         activityMainBinding.communicationItem.setOnClickListener(this);
         activityMainBinding.finish.setOnClickListener(this);
+
+       // activityMainBinding.menu.setOnClickListener(this);
 
     }
 
@@ -80,6 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.finish:
                 MainActivity.this.finishAffinity();
+                break;
+
+            case R.id.menu:
+                startNewActivity(this, LoginActivity.class);
+                //Set Login session in SharedPreference
+                MySharedPrefarance mySharedPrefarance = MySharedPrefarance.getPrefarences(MainActivity.this);
+                mySharedPrefarance.setLoginSession("");
                 break;
         }
     }

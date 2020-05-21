@@ -50,6 +50,7 @@ public class SharedPrefManager {
     }
 
 
+
     public void clear(){
         SharedPreferences sharedPreferences=mContext.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
