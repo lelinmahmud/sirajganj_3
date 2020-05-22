@@ -144,10 +144,11 @@ public interface APIService {
 
     // POST Opinion
     @FormUrlEncoded
-    @POST("contact-form-7/v1/contact-forms/281/feedback")
+    @POST("contact-form-7/v1/contact-forms/509/feedback")
     Flowable<BazarPostResponse> postOpinion(
-            @Field("Title") String title,
-            @Field("your-message") String msg
+            @Field("title") String title,
+            @Field("your-message") String msg,
+            @Field("your-name") String name
     );
 
 

@@ -63,12 +63,14 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
     private void submitOpinion(View view) {
         EditText et_title = view.findViewById(R.id.opinion_title);
         EditText et_details = view.findViewById(R.id.opinion_descriptions);
+        EditText et_name=view.findViewById(R.id.opinion_name);
         String title=et_title.getText().toString();
         String details=et_details.getText().toString();
+        String name=et_name.getText().toString();
 
-        if (isValid(title,details)){
+        if (isValid(title,details,name)){
 
-            mPresenter.opinionPost(title,details);
+            mPresenter.opinionPost(title,details,name);
             alertDialog.dismiss();
         }
         else {
@@ -78,8 +80,8 @@ public class OpinionActivity extends AppCompatActivity implements OpinionView{
         //TODO
     }
 
-    private boolean isValid(String title, String details) {
-        if (title.isEmpty() || details.isEmpty()) {
+    private boolean isValid(String title, String details,String name) {
+        if (title.isEmpty() || details.isEmpty()||name.isEmpty()) {
             return false;
         }
         return true;

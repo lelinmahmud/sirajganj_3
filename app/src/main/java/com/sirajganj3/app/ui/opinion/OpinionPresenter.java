@@ -29,9 +29,9 @@ public class OpinionPresenter {
                 .subscribe(this::opinionSccess,this::onError);
     }
 
-    public void opinionPost(String title,String details){
+    public void opinionPost(String title,String details,String name){
         mView.showProgressBar();
-        repository.postOpinion(title,details)
+        repository.postOpinion(title,details,name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::opinionPostSccess,this::onError);
